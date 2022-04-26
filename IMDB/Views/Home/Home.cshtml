@@ -1,0 +1,492 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width , initial-scale = 1.0" />
+    <title>IMDB Website</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap') {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        
+        }
+
+        :root {
+            --bg-color: white;
+            --text-color: black;
+            --main-color: red;
+        }
+
+        body {
+            background: var(--text-color);
+            color: var(--bg-color);
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        section {
+            padding: 4.5rem 0 1.5rem;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        header {
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 100px;
+            transition: 0.5s;
+            box-sizing: border-box;
+        }
+        header .shadow{
+         box-shadow:0 0 4px rgba(14, 55 ,54,50);
+            background:var(--bg-color);
+        }
+        header .shadow .navbar a{
+            color:var(--bg-color)
+        }
+            header .shadow .logo {
+                color: var(--bg-color)
+            }
+        html::-webkit-scrollbar{
+            width:0.5rem;
+            background:var(--bg-color);
+        }
+            html::-webkit-scrollbar-thumb{
+                background:var(--bg-color);
+                border-radius:5rem;
+            }
+
+            .logo {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--bg-color);
+                display: flex;
+                align-items: center;
+                column-gap: 0.5rem;
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+
+            .logo.bx {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 24px;
+                color: var(--main-color);
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+
+        .navbar {
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            column-gap: 5rem;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+            .navbar li {
+                font-family: 'Open Sans', sans-serif;
+                position: relative;
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+
+            .navbar a {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--bg-color);
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+
+                .navbar a::after {
+                    font-family: 'Open Sans', sans-serif;
+                    content: '';
+                    width: 0;
+                    height: 2px;
+                    background: var(--main-color);
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    transition: 0.4s all linear;
+                    box-sizing: border-box;
+                    list-style: none;
+                    text-decoration: none;
+                }
+
+                .navbar a:hover::after,
+                .navbar .home-active::after {
+                    font-family: 'Open Sans', sans-serif;
+                    width: 100%;
+                    box-sizing: border-box;
+                    list-style: none;
+                    text-decoration: none;
+                }
+
+        #menu-icon {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000001;
+            display: none;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .btn {
+            font-family: 'Open Sans', sans-serif;
+            padding: 0.7rem 1.4rem;
+            background: var(--main-color);
+            color: var(--bg-color);
+            font-weight: 400;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+            .btn:hover {
+                font-family: 'Open Sans', sans-serif;
+                background: #fa1216;
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+        .container {
+            font-family: 'Open Sans', sans-serif;
+            width: 100%;
+            min-height: 640px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgb(2,3,7);
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+        .container img{
+            position:absolute;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
+            z-index:-1;
+        }
+
+        .swiper-pagination-bullet {
+            font-family: 'Open Sans', sans-serif;
+            width: 6px !important;
+            height: 6px !important;
+            border-radius: 0.2rem !important;
+            background: var(--bg-color) !important;
+            opacity: 1 !important;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+        .swiper-pagination-bullet-active {
+            font-family: 'Open Sans', sans-serif;
+            width: 1.5rem !important;
+            background: var(--main-color) !important;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+        .home-text {
+            font-family: 'Open Sans', sans-serif;
+            z-index: 1000;
+            padding: 0 150px;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+            .home-text span {
+                font-family: 'Open Sans', sans-serif;
+                color: var(--bg-color);
+                font-weight: 500;
+                text-transform: uppercase;
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+            .home-text h1 {
+                font-family: 'Open Sans', sans-serif;
+                color: var(--bg-color);
+                font-size: 4rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+        .rate {
+            position: absolute;
+            right: 4rem;
+            bottom: 10%;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+            .rate .bx {
+                font-family: 'Open Sans', sans-serif;
+                background: var(--bg-color);
+                padding: 10px;
+                font-size: 2rem;
+                border-radius: 50%;
+                border: 4px solid rgb(2,3,7);
+                color: var(--main-color);
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+                .rate .bx:hover {
+                    font-family: 'Open Sans', sans-serif;
+                    background: var(--main-color);
+                    color: var(--bg-color);
+                    transition: 0.5s all linear;
+                    box-sizing: border-box;
+                    list-style: none;
+                    text-decoration: none;
+                }
+        .heading {
+            font-family: 'Open Sans', sans-serif;
+            max-width: 968px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--main-color);
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+        .movies-container {
+            max-width: 968px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(180px,auto));
+            grid-gap: 1rem;
+            margin-top: 2rem;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+        .box .box-img{
+            width:100%;
+            height:270px;
+
+        }
+        .box .box-img img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        .box h3 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+   
+    </style>
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <a href="#" class="logo">
+
+            <i class='bx bxl-imdb'></i> IMDB
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!--Menu-->
+        <ul class="navbar">
+            <li> <a href="#home" class="home-active">Home</a></li>
+            <li> <a href="#Movies">Movies</a></li>
+            <li> <a href="#Movies">Actors</a></li>
+            <li> <a href="#Movies">Directors</a></li>
+        </ul>
+        <a href="~/Views/Login/Login.cshtml" class="btn">Sign In</a>
+
+    </header>
+
+    <!--home-->
+    <section class="home swiper" id="home">
+        <!--First-->
+        <div class="swiper-wrapper">
+            <div class="swiper-slide container">
+                <img src="~/ViewAssets/unknown (1).png" alt="">
+                <div class="home-text">
+                    <span></span>
+                    <h1>Harry Potter <br>and the Deathly Hallows</h1>
+                    <a href="#" class="btn">Rate Now</a>
+                    <a href="#" class="rate">
+                        <i class='bx bx-star'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide container">
+                <img src="~/ViewAssets/home3.jpg" alt="">
+                <div class="home-text">
+                    <span>Marvel Universe</span>
+                    <h1>Spider-Man<br> Far From Home</h1>
+                    <a href="#" class="btn">Rate Now</a>
+                    <a href="#" class="rate">
+                        <i class='bx bx-star'></i>
+                    </a>
+                </div>
+            </div>
+            <!--Third-->
+
+            <div class="swiper-slide container">
+                <img src="~/ViewAssets/home2.jpg" alt="">
+                <div class="home-text">
+                    <span>Marvel Universe</span>
+                    <h1>Avengers<br> Infinity War</h1>
+                    <a href="#" class="btn">Rate Now</a>
+                    <a href="#" class="rate">
+                        <i class='bx bx-star'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+  
+
+        <div class="swiper-pagination"></div>
+
+    </section>
+
+    <section class="movies" id="movies">
+        <h2 class="heading">Top Movies</h2>
+        <!--MOVIES-->
+        <div class="movies-container">
+            <!--box1-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/doctorstrange.png" alt="" />
+                </div>
+                <h3>Doctor Strange in the Multiverse of Madness</h3>
+                <span>2h 6m | Adventure</span>
+            </div>
+            <!--box2-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m1.jpg" alt="" />
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box3-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/Screenshot 2022-04-26 071041.png" alt="" />
+                </div>
+                <h3>Thor: Love and Thunder</h3>
+                <span>120 min | Adventure</span>
+            </div>
+            <!--box4-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m3.jpg" alt="" />
+                </div>
+                <h3>Batman Vs Superman</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box5-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m4.jpg" alt="" />
+                </div>
+                <h3>John Wick 2</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box6-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m5.jpg" alt="" />
+                </div>
+                <h3>Batman Vs Superman</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box7-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/philosophers-stone-20-years-of-movie-magic-harry-poster.jpg" alt="" />
+                </div>
+                <h3>Harry Potter and the Philosopher's Stone</h3>
+                <span>
+                    2h 10m | PG-13
+                </span>
+            </div>
+            <!--box8-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/chamber-of-secrets-theatrical-poster-1050x0-c-default.jpg" alt="" />
+                </div>
+                <h3>Batman Vs Superman</h3>
+                <span>
+                    2h 10m | PG-13
+                </span>
+            </div>
+            <!--box9-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/noway home.png" alt="" />
+                </div>
+                <h3>Spider-Man: No Way Home</h3>
+                <span>120 min | Adventure</span>
+            </div>
+            <!--box10-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/hp2.png" alt="" />
+                </div>
+                <h3>Harry Potter and the Deathly Hallows: Part 1</h3>
+                <span>
+                    2h 26m | PG-13
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="~/Content/JavaScript.js"></script>
+</body>
+</html>
