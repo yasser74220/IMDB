@@ -111,6 +111,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="ViewAssets\add-image.png" />
     <Content Include="ViewAssets\back.jpg" />
     <Content Include="ViewAssets\bg-01.jpg" />
     <Content Include="ViewAssets\brands-and-logotypes.png" />
@@ -145,6 +146,7 @@
     <Content Include="ViewAssets\moon.png" />
     <Content Include="ViewAssets\IMDBLOGO.png" />
     <Content Include="ViewAssets\noway home.png" />
+    <Content Include="ViewAssets\password.png" />
     <Content Include="ViewAssets\philosophers-stone-20-years-of-movie-magic-harry-poster.jpg" />
     <Content Include="ViewAssets\Screenshot 2022-04-26 071041.png" />
     <Content Include="ViewAssets\sid-view.png" />
@@ -154,20 +156,57 @@
     <Content Include="ViewAssets\hp2.png" />
     <Content Include="ViewAssets\user.png" />
     <Content Include="ViewAssets\woman.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\SignUpController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DataLayer\IMDBContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Migrations\202204241406045_initial.cs" />
     <Compile Include="Migrations\202204241406045_initial.designer.cs">
       <DependentUpon>202204241406045_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205050739222_update.cs" />
+    <Compile Include="Migrations\202205050739222_update.designer.cs">
+      <DependentUpon>202205050739222_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205050742466_update-user.cs" />
+    <Compile Include="Migrations\202205050742466_update-user.designer.cs">
+      <DependentUpon>202205050742466_update-user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051010024_birth.cs" />
+    <Compile Include="Migrations\202205051010024_birth.designer.cs">
+      <DependentUpon>202205051010024_birth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051331351_update1.cs" />
+    <Compile Include="Migrations\202205051331351_update1.designer.cs">
+      <DependentUpon>202205051331351_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051454082_last.cs" />
+    <Compile Include="Migrations\202205051454082_last.designer.cs">
+      <DependentUpon>202205051454082_last.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051456579_last1.cs" />
+    <Compile Include="Migrations\202205051456579_last1.designer.cs">
+      <DependentUpon>202205051456579_last1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051505184_last2.cs" />
+    <Compile Include="Migrations\202205051505184_last2.designer.cs">
+      <DependentUpon>202205051505184_last2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051537025_lastss.cs" />
+    <Compile Include="Migrations\202205051537025_lastss.designer.cs">
+      <DependentUpon>202205051537025_lastss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205062141307_delete role.cs" />
+    <Compile Include="Migrations\202205062141307_delete role.designer.cs">
+      <DependentUpon>202205062141307_delete role.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -181,6 +220,7 @@
     <Compile Include="Models\MovieActor.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EditProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -191,9 +231,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\SignUp\SignUp.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\Home.cshtml" />
+    <Content Include="Views\Users\SignUp.cshtml" />
+    <Content Include="Views\Users\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -207,6 +248,33 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204241406045_initial.resx">
       <DependentUpon>202204241406045_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205050739222_update.resx">
+      <DependentUpon>202205050739222_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205050742466_update-user.resx">
+      <DependentUpon>202205050742466_update-user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051010024_birth.resx">
+      <DependentUpon>202205051010024_birth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051331351_update1.resx">
+      <DependentUpon>202205051331351_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051454082_last.resx">
+      <DependentUpon>202205051454082_last.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051456579_last1.resx">
+      <DependentUpon>202205051456579_last1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051505184_last2.resx">
+      <DependentUpon>202205051505184_last2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051537025_lastss.resx">
+      <DependentUpon>202205051537025_lastss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205062141307_delete role.resx">
+      <DependentUpon>202205062141307_delete role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

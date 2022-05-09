@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IMDB.Models.User
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,15 +13,12 @@
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet"
           href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <style>
-        import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap') {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            list-style: none;
-            text-decoration: none;
-        
+        html * {
+            font-size: 20PX !important;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 500 ;
         }
 
         :root {
@@ -34,7 +33,7 @@
             box-sizing: border-box;
             list-style: none;
             text-decoration: none;
-            font-family: 'Open Sans', sans-serif;
+  
         }
 
         section {
@@ -42,7 +41,7 @@
             box-sizing: border-box;
             list-style: none;
             text-decoration: none;
-            font-family: 'Open Sans', sans-serif;
+         
         }
 
         header {
@@ -57,40 +56,45 @@
             transition: 0.5s;
             box-sizing: border-box;
         }
-        header .shadow{
-         box-shadow:0 0 4px rgba(14, 55 ,54,50);
-            background:var(--bg-color);
-        }
-        header .shadow .navbar a{
-            color:var(--bg-color)
-        }
-            header .shadow .logo {
-                color: var(--bg-color)
-            }
-        html::-webkit-scrollbar{
-            width:0.5rem;
-            background:var(--bg-color);
-        }
-            html::-webkit-scrollbar-thumb{
-                background:var(--bg-color);
-                border-radius:5rem;
+
+            header .shadow {
+                box-shadow: 0 0 4px rgba(14, 55,54,50);
+                background: var(--bg-color);
             }
 
-            .logo {
-                font-family: 'Open Sans', sans-serif;
-                font-size: 24px;
-                font-weight: 600;
-                color: var(--bg-color);
-                display: flex;
-                align-items: center;
-                column-gap: 0.5rem;
-                box-sizing: border-box;
-                list-style: none;
-                text-decoration: none;
-            }
+                header .shadow .navbar a {
+                    color: var(--bg-color)
+                }
+
+                header .shadow .logo {
+                    color: var(--bg-color)
+                }
+
+        html::-webkit-scrollbar {
+            width: 0.5rem;
+            background: var(--bg-color);
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: var(--bg-color);
+            border-radius: 5rem;
+        }
+
+        .logo {
+      
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            column-gap: 0.5rem;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
 
             .logo.bx {
-                font-family: 'Open Sans', sans-serif;
+    
                 font-size: 24px;
                 color: var(--main-color);
                 box-sizing: border-box;
@@ -99,7 +103,7 @@
             }
 
         .navbar {
-            font-family: 'Open Sans', sans-serif;
+            margin-left:12%;
             display: flex;
             column-gap: 5rem;
             box-sizing: border-box;
@@ -108,7 +112,7 @@
         }
 
             .navbar li {
-                font-family: 'Open Sans', sans-serif;
+      
                 position: relative;
                 box-sizing: border-box;
                 list-style: none;
@@ -116,7 +120,8 @@
             }
 
             .navbar a {
-                font-family: 'Open Sans', sans-serif;
+                 
+          
                 font-size: 1rem;
                 font-weight: 500;
                 color: var(--bg-color);
@@ -126,7 +131,7 @@
             }
 
                 .navbar a::after {
-                    font-family: 'Open Sans', sans-serif;
+         
                     content: '';
                     width: 0;
                     height: 2px;
@@ -142,7 +147,7 @@
 
                 .navbar a:hover::after,
                 .navbar .home-active::after {
-                    font-family: 'Open Sans', sans-serif;
+        
                     width: 100%;
                     box-sizing: border-box;
                     list-style: none;
@@ -150,8 +155,7 @@
                 }
 
         #menu-icon {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 24px;
+ 
             cursor: pointer;
             z-index: 1000001;
             display: none;
@@ -161,7 +165,7 @@
         }
 
         .btn {
-            font-family: 'Open Sans', sans-serif;
+           
             padding: 0.7rem 1.4rem;
             background: var(--main-color);
             color: var(--bg-color);
@@ -173,14 +177,15 @@
         }
 
             .btn:hover {
-                font-family: 'Open Sans', sans-serif;
+               
                 background: #fa1216;
                 box-sizing: border-box;
                 list-style: none;
                 text-decoration: none;
             }
+
         .container {
-            font-family: 'Open Sans', sans-serif;
+      
             width: 100%;
             min-height: 640px;
             position: relative;
@@ -191,17 +196,18 @@
             list-style: none;
             text-decoration: none;
         }
-        .container img{
-            position:absolute;
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            object-position:center;
-            z-index:-1;
-        }
+
+            .container img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                z-index: -1;
+            }
 
         .swiper-pagination-bullet {
-            font-family: 'Open Sans', sans-serif;
+   
             width: 6px !important;
             height: 6px !important;
             border-radius: 0.2rem !important;
@@ -211,24 +217,27 @@
             list-style: none;
             text-decoration: none;
         }
+
         .swiper-pagination-bullet-active {
-            font-family: 'Open Sans', sans-serif;
+ 
             width: 1.5rem !important;
             background: var(--main-color) !important;
             box-sizing: border-box;
             list-style: none;
             text-decoration: none;
         }
+
         .home-text {
-            font-family: 'Open Sans', sans-serif;
+ 
             z-index: 1000;
             padding: 0 150px;
             box-sizing: border-box;
             list-style: none;
             text-decoration: none;
         }
+
             .home-text span {
-                font-family: 'Open Sans', sans-serif;
+ 
                 color: var(--bg-color);
                 font-weight: 500;
                 text-transform: uppercase;
@@ -236,8 +245,9 @@
                 list-style: none;
                 text-decoration: none;
             }
+
             .home-text h1 {
-                font-family: 'Open Sans', sans-serif;
+ 
                 color: var(--bg-color);
                 font-size: 4rem;
                 font-weight: 700;
@@ -246,6 +256,7 @@
                 list-style: none;
                 text-decoration: none;
             }
+
         .rate {
             position: absolute;
             right: 4rem;
@@ -254,8 +265,9 @@
             list-style: none;
             text-decoration: none;
         }
+
             .rate .bx {
-                font-family: 'Open Sans', sans-serif;
+ 
                 background: var(--bg-color);
                 padding: 10px;
                 font-size: 2rem;
@@ -266,8 +278,9 @@
                 list-style: none;
                 text-decoration: none;
             }
+
                 .rate .bx:hover {
-                    font-family: 'Open Sans', sans-serif;
+ 
                     background: var(--main-color);
                     color: var(--bg-color);
                     transition: 0.5s all linear;
@@ -275,8 +288,10 @@
                     list-style: none;
                     text-decoration: none;
                 }
+
         .heading {
-            font-family: 'Open Sans', sans-serif;
+ 
+            font-weight: bolder;
             max-width: 968px;
             margin-left: auto;
             margin-right: auto;
@@ -288,6 +303,7 @@
             list-style: none;
             text-decoration: none;
         }
+
         .movies-container {
             max-width: 968px;
             margin-left: auto;
@@ -300,24 +316,25 @@
             list-style: none;
             text-decoration: none;
         }
-        .box .box-img{
-            width:100%;
-            height:270px;
 
+        .box .box-img {
+            width: 100%;
+            height: 270px;
         }
-        .box .box-img img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-        }
+
+            .box .box-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
         .box h3 {
-            font-family: 'Open Sans', sans-serif;
+ 
             font-size: 0.9rem;
             box-sizing: border-box;
             list-style: none;
             text-decoration: none;
         }
-   
     </style>
 </head>
 <body>
@@ -335,7 +352,7 @@
             <li> <a href="#Movies">Actors</a></li>
             <li> <a href="#Movies">Directors</a></li>
         </ul>
-        <a href="~/Views/Login/Login.cshtml" class="btn">Sign In</a>
+        <a>@Html.ActionLink("SignUp", "SignUp",null , new { @class = "btn" })</a>
 
     </header>
 
@@ -379,7 +396,7 @@
                 </div>
             </div>
         </div>
-  
+
 
         <div class="swiper-pagination"></div>
 
@@ -392,7 +409,7 @@
             <!--box1-->
             <div class="box">
                 <div class="box-img">
-                    <img src="~/ViewAssets/doctorstrange.png" alt="" />
+                     <img src="~/ViewAssets/doctorstrange.png" alt="" />
                 </div>
                 <h3>Doctor Strange in the Multiverse of Madness</h3>
                 <span>2h 6m | Adventure</span>
@@ -487,6 +504,6 @@
 
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="~/Content/JavaScript.js"></script>
+    <script src="~/Content/JavaScript.js"></script>
 </body>
 </html>
