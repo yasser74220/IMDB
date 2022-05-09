@@ -1,24 +1,33 @@
-﻿
+﻿@model IMDB.Models.User
+
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta charset="UTF-8">
     <title>Log In</title>
     <style>
+
+        html * {
+            font-family: 'Ubuntu', sans-serif;
+        }
+
         body {
-            background-color: rgba(0, 0, 0, 0.904);
-            background-image: url("../web/bg-01.jpg");
+            background-color: black;
             background-size: 1700px;
             background-repeat: no-repeat;
         }
 
         .divone {
+            justify-content: center;
             background-color: rgb(255, 255, 255);
             height: 600px;
             width: 440px;
             border-color: black;
-            margin-left: 550px;
-            margin-top: 70px;
+            margin-left: 35%;
+            margin-top: 7.5%;
             border-radius: 10px;
             padding: 20px;
         }
@@ -88,7 +97,6 @@
         .divtwo a {
             margin: 35px;
         }
-
 
         i {
             position: absolute;
@@ -173,76 +181,57 @@
 
 </head>
 <body>
-    <button class="darkmode" onclick="toggle_light_mode()">
-        <img class="moon" src="~/ViewAssets/moon.png" alt="">
-    </button>
-    <div class="divone">
-        <p>Sign in</p>
-        <br><br>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
+        <div class="divone">
+            <p>Sign in</p>
+            <br><br>
+                <span class="one">
+                    <i><img src="~/ViewAssets/email.png" alt=""></i>
+                    @Html.TextBoxFor(Model => Model.Email, new { placeholder = "Email", @class = "input" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "p" })
 
+                </span>
+            <br>
+            <br>
+            <span class="two">
+                <i><img src="~/ViewAssets/lock.png" alt=""></i>
+                @Html.TextBoxFor(Model => Model.Password, new { @class = "input", @type = "password", placeholder = "Password", })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "p" })
 
-        <span class="one">
-            <i><img src="~/ViewAssets/email.png" alt=""></i>
-            <input id="username" type="text" placeholder="User Name">
-        </span>
-        <br>
-        <br>
-        <span class="two">
-            <i><img src="~/ViewAssets/lock.png" alt=""></i>
-            <button id="show" type="submit" onclick="eye()"> <img src="..\web\eye.png" alt=""></button>
-            <input id="password" type="password" placeholder="Password">
+                <br>
+                <br>
+            </span>
+
 
             <br>
             <br>
-        </span>
+            <span class="four">
+                <br> <br>
 
 
-
-        <span class="three">
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-            <a href="forget">Forgot Password</a>
-        </span>
-
-
-        <br>
-        <br>
-
-        <span class="four">
-            <br> <br>
-
-
-            <button class="buttonlogin" type="submit" onclick="getinfo()">
-                Login
-            </button>
-
-
-            <br>
-            <br> <a href="..\web\Sign up.html">
-                <button class="buttonsign" type="submit">
-                    Sign Up
+                <button class="buttonlogin" type="submit" value="Login">
+                    Login
                 </button>
+ 
 
-            </a>
+                <br>
+                <br> <a href="..\web\Sign up.html">
+                    <button class="buttonsign" type="submit">
+                        Sign Up
+                    </button>
+
+                </a>
 
 
-        </span>
+            </span>
 
 
-        <p> Or Login With</p>
-        <div class="divtwo">
-            <a href="facebook.com">
-                <img src="~/ViewAssets/facebook.png" alt="facebook">
-            </a>
-            <a href="google.com">
-                <img src="~/ViewAssets/brands-and-logotypes.png" alt="google">
-            </a>
-            <a href="twitter">
-                <img src="~/ViewAssets/twitter (1).png" alt="twitter">
 
-            </a>
+
         </div>
-
-    </div>
+    }
 </body>
 </html>
