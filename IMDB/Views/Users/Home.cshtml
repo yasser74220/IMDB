@@ -347,7 +347,7 @@
         <div class="bx bx-menu" id="menu-icon"></div>
         <!--Menu-->
         <ul class="navbar">
-            <li><a href="~/Views/search/Search.cshtml"></a></li>
+            <li>@Html.ActionLink("Search","search", "Search",new {id ="" }, new { @class = "btn" })</li>
             <li> <a href="#home" class="home-active">Home</a></li>
             <li> <a href="#Movies">Movies</a></li>
             <li> <a href="#Movies">Actors</a></li>
