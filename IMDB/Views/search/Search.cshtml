@@ -52,6 +52,7 @@
                 </tr>
             }
 
+<<<<<<< Updated upstream
             @foreach (var item in Model.Directors)
             {
                 <tr>
@@ -69,6 +70,33 @@
             <tr>
                 <th scope="col">Movie name</th>
                 <th scope="col">Image</th>
+=======
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody id="DataSearching">
+                    @foreach (var item in Model.Actors)
+                    {
+                        <tr>
+                             
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.Age</td>
+                        </tr>
+                    }
+
+                    @foreach (var item in Model.Directors)
+                    {
+                        <tr>
+                           
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.Age</td>
+                        </tr>
+                    }
+>>>>>>> Stashed changes
 
             </tr>
         </thead>

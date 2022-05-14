@@ -163,6 +163,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Controllers\MovieController.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Controllers\searchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DataLayer\IMDBContext.cs" />
@@ -210,6 +214,14 @@
     <Compile Include="Migrations\202205062141307_delete role.designer.cs">
       <DependentUpon>202205062141307_delete role.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205140628576_update227.cs" />
+    <Compile Include="Migrations\202205140628576_update227.designer.cs">
+      <DependentUpon>202205140628576_update227.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205140638280_update2.cs" />
+    <Compile Include="Migrations\202205140638280_update2.designer.cs">
+      <DependentUpon>202205140638280_update2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -223,6 +235,10 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EditProfile.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="ViewModels\MovieDetailsViewModel.cs" />
+>>>>>>> Stashed changes
     <Compile Include="ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +255,10 @@
     <Content Include="Views\Users\SignUp.cshtml" />
     <Content Include="Views\Users\EditProfile.cshtml" />
     <Content Include="Views\search\Search.cshtml" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Views\Movie\MovieDetails.cshtml" />
+>>>>>>> Stashed changes
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -279,6 +299,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205062141307_delete role.resx">
       <DependentUpon>202205062141307_delete role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205140628576_update227.resx">
+      <DependentUpon>202205140628576_update227.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205140638280_update2.resx">
+      <DependentUpon>202205140638280_update2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
