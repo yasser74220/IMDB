@@ -111,6 +111,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="styles\search.css" />
     <Content Include="ViewAssets\add-image.png" />
     <Content Include="ViewAssets\back.jpg" />
     <Content Include="ViewAssets\bg-01.jpg" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\searchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DataLayer\IMDBContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,6 +223,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EditProfile.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -235,6 +238,7 @@
     <Content Include="Views\Users\Home.cshtml" />
     <Content Include="Views\Users\SignUp.cshtml" />
     <Content Include="Views\Users\EditProfile.cshtml" />
+    <Content Include="Views\search\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
