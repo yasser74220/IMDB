@@ -1,0 +1,359 @@
+﻿@model IMDB.ViewModels.MovieDetailsViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #171a1f;
+            font-family: 'Segoe UI';
+            color: #f1f2f3;
+        }
+
+        header {
+            height: 3.5rem;
+            box-shadow: 1px 1px 1px #0d0c0c;
+        }
+
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Small */
+        @@media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        /* Medium */
+        @@media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        /* Large */
+        @@media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+
+        .logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+        }
+
+        .IMDB {
+            font-size: 2rem;
+        }
+
+        .User__Rating {
+            font-size: 1.5rem;
+        }
+
+        .movie__details {
+            padding: 2rem 0;
+            margin: 1.5rem 0 1rem;
+            position: relative;
+        }
+
+            .movie__details img {
+                width: 100%;
+                height: 70vh;
+            }
+
+            .movie__details .movie__data {
+                padding: .5rem 1rem;
+            }
+
+        .movie__data h2 {
+            margin-bottom: .5rem;
+        }
+
+        .movie__data h3 {
+            margin-bottom: 1rem;
+        }
+
+        .movie__actors {
+            padding: 2rem 1rem;
+        }
+
+            .movie__actors ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                padding: 1rem;
+                gap: 2rem;
+            }
+
+        .actor {
+            display: flex;
+            align-items: center;
+            width: calc(50% - 1rem);
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1rem;
+        }
+
+        .actor__img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .actor__name {
+            margin-left: 1.5rem;
+        }
+
+
+
+        .user__comments {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .comments {
+            list-style: none;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .comment {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 1rem;
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .user__img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .comment p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: .9rem;
+        }
+
+        .title {
+            margin: 1rem auto;
+            padding: 1rem 1.25rem;
+            position: relative;
+            border: 1px solid white;
+            color: white;
+            width: fit-content;
+            transition: 0.4s;
+        }
+
+            .title::after, .title::before {
+                content: "";
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #f9f9f9;
+                z-index: -1;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .title::after {
+                right: -35px;
+            }
+
+            .title::before {
+                left: -35px;
+            }
+
+            .title:hover {
+                color: black;
+                border-color: black;
+                transition-delay: 0.5s;
+            }
+
+                .title:hover::after {
+                    animation: move-right 0.5s forwards;
+                }
+
+                .title:hover::before {
+                    animation: move-left 0.5s forwards;
+                }
+
+        @@keyframes move-right {
+            50% {
+                width: 12px;
+                height: 12px;
+                right: 0;
+            }
+
+            100% {
+                border-radius: 0;
+                right: 0;
+                height: 100%;
+                width: 50%;
+            }
+        }
+
+        @@keyframes move-left {
+            50% {
+                width: 12px;
+                height: 12px;
+                left: 0;
+            }
+
+            100% {
+                border-radius: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .rate {
+            position: absolute;
+            bottom: 3.5rem;
+            right: 5rem;
+        }
+
+            .rate a {
+                display: inline-block;
+                text-decoration: none;
+                margin: .5rem;
+            }
+
+            .rate img {
+                width: 45px;
+                height: 45px;
+            }
+
+        form {
+            width: 100%;
+            padding: 1rem 2.5rem;
+        }
+
+            form label {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin: 0.5rem;
+                font-size: 1.5rem;
+            }
+
+        .user__comment-input {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #ccc;
+            border-radius: 2rem;
+        }
+
+        form input[type="submit"] {
+            width: fit-content;
+            display: block;
+            margin: 1.5rem auto 0;
+            border-radius: 55px;
+            padding: 20px;
+            background-color: #2196f3;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+            form input[type="submit"]:hover {
+                background-color: #077ee1;
+            }
+    </style>
+</head>
+<body>
+    <header> Navigation Bar</header>
+    <main class="container">
+        <section class="movie__details">
+            <div class="logo">
+                <p class="IMDB">IMDB</p>
+                @if (Model.hadRated)
+                {
+                    <p class="User__Rating">You @Model.like.like Thi Movie</p>
+                }
+                else
+                {
+                    <p class="User__Rating">You did not rate this movie</p>
+                }
+            </div>
+            <img src="~/ViewAssets/@Model.movie.ImgPath">
+            <div class="movie__data">
+                <h2>@Model.movie.Movie_Name</h2>
+                <h3>@Model.movie.Director.FirstName @Model.movie.Director.LastName </h3>
+            </div>
+            <div class="rate">
+                <a href=@Url.Action(" like", "Movie" )><img src="~/ViewAssets/dislike.jpg" /></a>
+                <a href=@Url.Action(" dislike", "Movie" )><img src="~/ViewAssets/like.png" /></a>
+            </div>
+        </section>
+        <h2 class="title">Actors</h2>
+        <section class="movie__actors">
+            <ul>
+                @foreach (var actor in Model.movie.MovieActors)
+                {
+                    <li class="actor">
+                        <img src="~/ViewAssets/@actor.Actor.Img" class="actor__img" />
+                        <h3 class="actor__name">@actor.Actor.FirstName @actor.Actor.LastName</h3>
+                    </li>
+                }
+            </ul>
+        </section>
+        @using (Html.BeginForm("MovieDetails", "Movie",FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <label for="comment-input">Write Your Comment</label>
+            @Html.TextBoxFor(Model => Model.comment, new { placeholder = "Write Your Comment Here", @class = "user__comment-input", @id = "comment-input" })
+            @Html.ValidationMessageFor(model => model.comment.comment, "", new { @class = "p" })
+
+
+            <input type="submit" value="Submit" />
+        }
+
+        <h2 class="title">Comments</h2>
+        <section class="user__comments">
+            <ul class="comments">
+                @foreach (var comment in Model.movie.Comments)
+                {
+                    <li class="comment">
+                        <img src="~/ViewAssets/@comment.User.Image" class="user__img" />
+                        <section>
+                            <h3 class="user__name">@comment.User.Fname  @comment.User.Lname</h3>
+                            <p clas="user__comment">@comment.comment</p>
+                            <section>
+                    </li>
+                }
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

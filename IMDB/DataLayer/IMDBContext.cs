@@ -23,6 +23,11 @@ namespace IMDB.DataLayer
         public DbSet<FavouriteActor> UserActors { get; set; }
         public DbSet<FavouriteDirector> UserDirectors { get; set; }
         public DbSet<FavouriteMovie> UserMovies { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MovieActor>().HasKey(sc => new { sc.Actor_ID, sc.Movie_ID });
+            modelBuilder.Entity<Like>().HasKey(sc => new { sc.Movie_ID, sc.User_ID });
+        }
     }
 
 }

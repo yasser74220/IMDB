@@ -81,6 +81,8 @@ C:\Users\yasse\source\repos\IMDB\IMDB\obj\Debug\IMDB.csproj.CopyComplete
 C:\Users\yasse\source\repos\IMDB\IMDB\obj\Debug\IMDB.dll
 C:\Users\yasse\source\repos\IMDB\IMDB\obj\Debug\IMDB.pdb
 C:\Users\yasse\source\repos\IMDB\IMDB\obj\Debug\IMDB.Migrations.deleterole.resources
+C:\Users\yasse\source\repos\IMDB\IMDB\obj\Debug\IMDB.Migrations.update227.resources
+C:\Users\yasse\source\repos\IMDB\IMDB\obj\Debug\IMDB.Migrations.update2.resources
 C:\Users\yasse\source\repos\IMDB\IMDB\obj\Debug\IMDB.csprojAssemblyReference.cache
 D:\IApro\IMDB\IMDB\bin\IMDB.dll.config
 D:\IApro\IMDB\IMDB\bin\IMDB.dll
