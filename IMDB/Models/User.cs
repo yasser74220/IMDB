@@ -28,24 +28,24 @@ namespace IMDB.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "Email Address")]
-        public String Email{ get; set; }
+        public string Email{ get; set; }
 
         [Required]
         [StringLength(50)]
         [Compare("Email", ErrorMessage = "The email and confirmation email do not match.")]
-        public String ConfirmEmail { get; set; }
+        public string ConfirmEmail { get; set; }
 
         [Required]
         [StringLength(50)]
         [DataType(DataType.Password)]
-        public String Password { get; set; }
+        public string Password { get; set; }
 
         [Required]
         [StringLength(50)]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public String ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; }
 
         [Required]
         public UserGender Gender { get; set; }

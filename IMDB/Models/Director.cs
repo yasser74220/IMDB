@@ -21,6 +21,8 @@ namespace IMDB.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Range(1, 120, ErrorMessage = "Incorrect Age Value")]
         public int Age { get; set; }
+        
     }
 }

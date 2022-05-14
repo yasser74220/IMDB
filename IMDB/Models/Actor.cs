@@ -21,13 +21,15 @@ namespace IMDB.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Range(1, 120, ErrorMessage = "Incorrect Age Value")]
         public int Age { get; set; }
 
         [FileExtensions(Extensions = "jpg,jpeg,png")]
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Actor Image")]
-        public string Img { get; set; }
-         // nav prop
+        public string ImgPath { get; set; }
+
+        // nav prop
         public virtual ICollection<MovieActor> MovieActors { get; set; }
     }
 }

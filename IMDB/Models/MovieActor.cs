@@ -9,7 +9,9 @@ namespace IMDB.Models
 {
     public class MovieActor
     {
-      
+        [Key]
+        public int ID { get; set; }
+
         [Required]
         [ForeignKey("Movie")]
         public int Movie_ID { get; set; }
