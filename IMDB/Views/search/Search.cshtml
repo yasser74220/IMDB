@@ -47,7 +47,7 @@
             {
                 <tr>
                     <td>actor</td>
-                    <td>@item.FirstName @item.LastName</td>
+                    <td> @Html.ActionLink(item.FirstName + " " + item.LastName, "ActorProfile", "Admin",  new { id = item.Actor_ID }, new { @class = "ActorLink" })</td>
                     <td>@item.Age</td>
                 </tr>
             }
@@ -57,7 +57,7 @@
             {
                 <tr>
                     <td>director</td>
-                    <td>@item.FirstName @item.LastName</td>
+                    <td>@Html.ActionLink(item.FirstName + " " + item.LastName, "DirectorProfile", "Admin", new { id = item.Director_ID }, new { @class = "DirectorLink" })</td>
                     <td>@item.Age</td>
                 </tr>
             }
@@ -70,35 +70,8 @@
             <tr>
                 <th scope="col">Movie name</th>
                 <th scope="col">Image</th>
-
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Age</th>
-                        </tr>
-                    </thead>
-                    <tbody id="DataSearching">
-                        @foreach (var item in Model.Actors)
-                        {
-                            <tr>
-
-                                <td>@item.FirstName @item.LastName</td>
-                                <td>@item.Age</td>
-                            </tr>
-                        }
-
-                        @foreach (var item in Model.Directors)
-                        {
-                            <tr>
-
-                                <td>@item.FirstName @item.LastName</td>
-                                <td>@item.Age</td>
-                            </tr>
-                        }
-
-
-            </tr>
+             </tr>
+               
         </thead>
         <tbody>
             @foreach (var item in Model.Movies)
