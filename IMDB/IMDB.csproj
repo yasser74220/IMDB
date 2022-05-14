@@ -1,5 +1,4 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,10 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -95,19 +94,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\boxicons.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\Chosen\chosen-sprite.png" />
+    <Content Include="Content\Chosen\chosen.min.css" />
     <Content Include="Content\JavaScript.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\stylesheet.css" />
+    <Content Include="Content\Styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="Content\bootstrap-chosen.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -156,12 +165,14 @@
     <Content Include="ViewAssets\hp2.png" />
     <Content Include="ViewAssets\user.png" />
     <Content Include="ViewAssets\woman.png" />
+    <Content Include="Content\NavBar.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DataLayer\IMDBContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,6 +219,38 @@
     <Compile Include="Migrations\202205062141307_delete role.designer.cs">
       <DependentUpon>202205062141307_delete role.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205120250194_update models.cs" />
+    <Compile Include="Migrations\202205120250194_update models.designer.cs">
+      <DependentUpon>202205120250194_update models.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205120349302_Update Data Annotations and model props.cs" />
+    <Compile Include="Migrations\202205120349302_Update Data Annotations and model props.designer.cs">
+      <DependentUpon>202205120349302_Update Data Annotations and model props.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205121903116_updated movie image.cs" />
+    <Compile Include="Migrations\202205121903116_updated movie image.Designer.cs">
+      <DependentUpon>202205121903116_updated movie image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205121925165_withdraw movie image update.cs" />
+    <Compile Include="Migrations\202205121925165_withdraw movie image update.Designer.cs">
+      <DependentUpon>202205121925165_withdraw movie image update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205122036156_update m to m relationship bitween movie and actor.cs" />
+    <Compile Include="Migrations\202205122036156_update m to m relationship bitween movie and actor.Designer.cs">
+      <DependentUpon>202205122036156_update m to m relationship bitween movie and actor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205131800407_Renaming img column in actor table.cs" />
+    <Compile Include="Migrations\202205131800407_Renaming img column in actor table.Designer.cs">
+      <DependentUpon>202205131800407_Renaming img column in actor table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205132254420_Age constraints.cs" />
+    <Compile Include="Migrations\202205132254420_Age constraints.Designer.cs">
+      <DependentUpon>202205132254420_Age constraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205140728246_nothing.cs" />
+    <Compile Include="Migrations\202205140728246_nothing.Designer.cs">
+      <DependentUpon>202205140728246_nothing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -220,7 +263,11 @@
     <Compile Include="Models\MovieActor.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ActorMovies.cs" />
+    <Compile Include="ViewModels\DirectorMovies.cs" />
     <Compile Include="ViewModels\EditProfile.cs" />
+    <Compile Include="ViewModels\MovieActorsDirectors.cs" />
+    <Compile Include="ViewModels\MovieActors_vm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -235,6 +282,19 @@
     <Content Include="Views\Users\Home.cshtml" />
     <Content Include="Views\Users\SignUp.cshtml" />
     <Content Include="Views\Users\EditProfile.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\CreateMovie.cshtml" />
+    <Content Include="Views\Admin\DeleteMovie.cshtml" />
+    <Content Include="Views\Admin\EditMovie.cshtml" />
+    <Content Include="Views\Admin\ActorProfile.cshtml" />
+    <Content Include="Views\Admin\MovieDetails.cshtml" />
+    <Content Include="Views\Admin\EditActor.cshtml" />
+    <Content Include="Views\Admin\DirectorProfile.cshtml" />
+    <Content Include="Views\Admin\EditDirector.cshtml" />
+    <Content Include="Views\Admin\CreateActor.cshtml" />
+    <Content Include="Views\Admin\Actors.cshtml" />
+    <Content Include="Views\Admin\Directors.cshtml" />
+    <Content Include="Views\Admin\CreateDirector.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -244,6 +304,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204241406045_initial.resx">
@@ -276,6 +337,30 @@
     <EmbeddedResource Include="Migrations\202205062141307_delete role.resx">
       <DependentUpon>202205062141307_delete role.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205120250194_update models.resx">
+      <DependentUpon>202205120250194_update models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205120349302_Update Data Annotations and model props.resx">
+      <DependentUpon>202205120349302_Update Data Annotations and model props.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205121903116_updated movie image.resx">
+      <DependentUpon>202205121903116_updated movie image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205121925165_withdraw movie image update.resx">
+      <DependentUpon>202205121925165_withdraw movie image update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205122036156_update m to m relationship bitween movie and actor.resx">
+      <DependentUpon>202205122036156_update m to m relationship bitween movie and actor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205131800407_Renaming img column in actor table.resx">
+      <DependentUpon>202205131800407_Renaming img column in actor table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205132254420_Age constraints.resx">
+      <DependentUpon>202205132254420_Age constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205140728246_nothing.resx">
+      <DependentUpon>202205140728246_nothing.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -307,10 +392,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

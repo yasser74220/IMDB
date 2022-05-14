@@ -1,0 +1,75 @@
+﻿@model IMDB.ViewModels.ActorMovies
+
+@{
+    ViewBag.Title = "Create Actor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateActor</h2>
+
+@using (Html.BeginForm("CreateActor", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Actor.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Actor.FirstName, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+            @Html.ValidationMessageFor(model => model.Actor.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Actor.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Actor.LastName, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+            @Html.ValidationMessageFor(model => model.Actor.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Actor.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Actor.Age, new { htmlAttributes = new { @class = "form-control", @required = "true", @min = "1", @max = "120" } })
+            @Html.ValidationMessageFor(model => model.Actor.Age, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Actor.Actor_ID, "Select The Actor's Movies", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                var movies = Model.Movies.Select(s => new
+                {
+                    Text = s.Movie_Name,
+                    Value = s.Movie_ID
+                }).Distinct();
+                @Html.ListBoxFor(model => model.MoviesIds, new MultiSelectList(movies, "Value", "Text"), new { multiple = "multiple" });
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Actor.ImgPath, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="col-md-10">
+                <input name="file" type="file" class="text-danger" required />
+            </div>
+            @Html.ValidationMessageFor(model => model.Actor.ImgPath, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Actors")
+</div>

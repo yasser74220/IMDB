@@ -10,10 +10,26 @@ namespace IMDB.Models
     {
         [Key]
         public int Actor_ID { get; set; }
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
-        public int Age { get; set; }
-        public byte[] Img { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Range(1, 120, ErrorMessage = "Incorrect Age Value")]
+        public int Age { get; set; }
+
+        [FileExtensions(Extensions = "jpg,jpeg,png")]
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Actor Image")]
+        public string ImgPath { get; set; }
+
+        // nav prop
+        public virtual ICollection<MovieActor> MovieActors { get; set; }
     }
 }

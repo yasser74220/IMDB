@@ -1,0 +1,62 @@
+﻿@model IMDB.ViewModels.MovieActors_vm
+
+@{
+    ViewBag.Title = "MovieDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movie Details</h2>
+
+<div>
+    <h4>MovieActor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Movie Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie.Movie_Name)
+        </dd>
+
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.ImgPath)
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Path.GetFileName(Model.Movie.ImgPath)" width="100" height="100" />
+        </dd>
+
+        <br />
+
+        <dt>
+            Director
+        </dt>
+
+        <dd>
+            @Html.ActionLink(Model.Movie.Director.FirstName + " " + Model.Movie.Director.LastName, "DirectorProfile", new { id = Model.Movie.Director_ID })
+        </dd>
+
+        <br />
+
+        <dt>
+            Actors
+        </dt>
+
+        @foreach (var movieActor in Model.MovieActors)
+        {
+            <dd>
+                @Html.ActionLink(movieActor.Actor.FirstName + " " + movieActor.Actor.LastName, "ActorProfile", new { id = movieActor.Actor.Actor_ID }) <br />
+            </dd>
+        }
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditMovie", new { id = Model.Movie.Movie_ID }) |
+    @Html.ActionLink("Delete", "DeleteMovie", new { id = Model.Movie.Movie_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
