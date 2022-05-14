@@ -27,8 +27,7 @@ namespace IMDB.Models
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Actor Image")]
         public string Img { get; set; }
-
-        // nav prop
+         // nav prop
         public virtual ICollection<MovieActor> MovieActors { get; set; }
     }
 }
