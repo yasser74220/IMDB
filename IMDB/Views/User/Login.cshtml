@@ -1,0 +1,240 @@
+﻿
+@model IMDB.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <style>
+
+        html * {
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        body {
+            background-color: black;
+            background-size: 1700px;
+            background-repeat: no-repeat;
+        }
+
+        .divone {
+            justify-content: center;
+            background-color: rgb(255, 255, 255);
+            height: 600px;
+            width: 440px;
+            border-color: black;
+            margin-left: 35%;
+            margin-top: 7.5%;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .divtwo {
+            float: left;
+            margin: 50px;
+        }
+
+        p {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            font-weight: 500;
+            font-size: 20px;
+            padding-top: 10px;
+        }
+
+        .one input, .two input {
+            width: 50%;
+            padding: 12px 25px 12px 50px;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .buttonlogin {
+            background-color: #d81ff9;
+            border: none;
+            cursor: pointer;
+            padding: 12px 50px 12px 50px;
+            font-weight: 400;
+            outline: none;
+            border-radius: 50px;
+            margin-left: 150px;
+            color: honeydew;
+        }
+
+        .buttonsign {
+            background-color: #5d8beb;
+            border: none;
+            cursor: pointer;
+            padding: 12px 50px 12px 50px;
+            font-weight: 400;
+            outline: none;
+            border-radius: 50px;
+            margin-left: 150px;
+            color: honeydew;
+        }
+
+        .three a, .three input {
+            font-size: 14px;
+            color: #616161;
+            margin-left: 75px;
+        }
+
+        .one {
+            margin: 70px;
+        }
+
+        .two {
+            margin: 70px;
+        }
+
+        img {
+            width: 40px;
+        }
+
+        .divtwo a {
+            margin: 35px;
+        }
+
+        i {
+            position: absolute;
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 1px;
+        }
+
+        .two i img, .one i img {
+            width: 20px;
+        }
+
+        .four a {
+            text-decoration: none;
+            font-size: 15;
+            color: white;
+        }
+
+        .four .buttonlogin {
+            word-spacing: -50px;
+        }
+
+        #show {
+            position: absolute;
+            margin-left: 266px;
+            margin-top: 9px;
+            border: none;
+            padding-top: 5px;
+            background-color: Transparent;
+            outline: none;
+            cursor: pointer;
+        }
+
+            #show img {
+                width: 15px;
+            }
+
+        .darkmode {
+            padding: 1em;
+            font-size: 1em;
+            background: rgba(17, 0, 0, 0.192);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            top: 8px;
+            right: 8px;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+
+        button:hover {
+            opacity: 0.3s;
+        }
+
+        body[data-light-mode= "dark"] {
+            background-color: #000000;
+            background-image: none;
+        }
+
+            body[data-light-mode= "dark"] .divone {
+                background-color: #444444;
+                background-image: none;
+                color: white;
+            }
+
+            body[data-light-mode="dark"]
+            button {
+                background-color: rgb(34, 30, 30);
+                color: rgb(255, 255, 255);
+            }
+
+        .moon {
+            position: absolute;
+            margin-top: -16px;
+            margin-left: -15px;
+            width: 30px;
+        }
+    </style>
+    <script src="sign.js"></script>
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="divone">
+            <p>Sign in</p>
+            <br><br>
+            <span class="one">
+                <i><img src="~/ViewAssets/email.png" alt=""></i>
+                @Html.TextBoxFor(Model => Model.Email, new { placeholder = "Email", @class = "input" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "p" })
+
+            </span>
+            <br>
+            <br>
+            <span class="two">
+                <i><img src="~/ViewAssets/lock.png" alt=""></i>
+                @Html.TextBoxFor(Model => Model.Password, new { @class = "input", @type = "password", placeholder = "Password", })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "p" })
+
+                <br>
+                <br>
+            </span>
+
+
+            <br>
+            <br>
+            <span class="four">
+                <br> <br>
+
+
+                <button class="buttonlogin" type="submit" value="Login">
+                    Login
+                </button>
+
+
+                <br>
+                <br> <a href="..\web\Sign up.html">
+                    <button class="buttonsign" type="submit">
+                        Sign Up
+                    </button>
+
+                </a>
+
+
+            </span>
+
+
+
+
+        </div>
+    }
+</body>
+</html>

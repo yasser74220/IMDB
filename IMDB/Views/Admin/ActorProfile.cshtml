@@ -46,9 +46,9 @@
         </dt>
         @foreach (var actorMovie in Model.MovieActors)
         {
-    <dd>
-        @Html.ActionLink(actorMovie.Movie.Movie_Name, "MovieDetails", new { id = actorMovie.Movie_ID }) <br />
-    </dd>
+            <dd>
+                @Html.ActionLink(actorMovie.Movie.Movie_Name, "MovieDetails", new { id = actorMovie.Movie_ID }) <br />
+            </dd>
         }
 
 

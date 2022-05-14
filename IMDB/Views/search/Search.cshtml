@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="@Url.Action("Home","users")">IMDb</a>
+        <a class="active" href="@Url.Action("Home","user")">IMDb</a>
         <div class="search-container">
             @using (Html.BeginForm())
             {
@@ -52,7 +52,7 @@
                 </tr>
             }
 
- 
+
             @foreach (var item in Model.Directors)
             {
                 <tr>
@@ -70,33 +70,33 @@
             <tr>
                 <th scope="col">Movie name</th>
                 <th scope="col">Image</th>
- 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                    </tr>
-                </thead>
-                <tbody id="DataSearching">
-                    @foreach (var item in Model.Actors)
-                    {
-                        <tr>
-                             
-                            <td>@item.FirstName @item.LastName</td>
-                            <td>@item.Age</td>
-                        </tr>
-                    }
 
-                    @foreach (var item in Model.Directors)
-                    {
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                           
-                            <td>@item.FirstName @item.LastName</td>
-                            <td>@item.Age</td>
+                            <th>Name</th>
+                            <th>Age</th>
                         </tr>
-                    }
- 
+                    </thead>
+                    <tbody id="DataSearching">
+                        @foreach (var item in Model.Actors)
+                        {
+                            <tr>
+
+                                <td>@item.FirstName @item.LastName</td>
+                                <td>@item.Age</td>
+                            </tr>
+                        }
+
+                        @foreach (var item in Model.Directors)
+                        {
+                            <tr>
+
+                                <td>@item.FirstName @item.LastName</td>
+                                <td>@item.Age</td>
+                            </tr>
+                        }
+
 
             </tr>
         </thead>

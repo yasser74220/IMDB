@@ -54,10 +54,8 @@ body {
 
     /* Style the input container */
     .topnav .search-container {
-        float:none;
+        float: none;
         text-align: center;
-        
-        
     }
 
     /* Style the input field inside the navbar */
@@ -66,7 +64,7 @@ body {
         margin-top: 8px;
         font-size: 17px;
         border: none;
-        width:500px;
+        width: 500px;
     }
 
     /* Style the button inside the input container */
@@ -104,6 +102,7 @@ body {
         border: 1px solid #ccc;
     }
 }
+
 table {
     border: 1px solid #ccc;
     border-collapse: collapse;
@@ -119,17 +118,16 @@ table {
     }
 
     table tr {
-       background-color:#4b4b4b;
+        background-color: #4b4b4b;
         border: 1px solid #ddd;
         padding: .35em;
-        
     }
 
     table th,
     table td {
         padding: .625em;
         text-align: center;
-        color:black;
+        color: black;
     }
 
     table th {
@@ -157,7 +155,6 @@ table {
             padding: 0;
             position: absolute;
             width: 1px;
-            
         }
 
         table tr {
@@ -187,5 +184,4 @@ table {
             table td:last-child {
                 border-bottom: 0;
             }
-
 }

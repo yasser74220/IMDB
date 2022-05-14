@@ -8,7 +8,7 @@ namespace IMDB.ViewModels
 {
     public class EditProfile
     {
-        
+
         public User user { get; set; }
         public FavouriteActor favouriteActor { get; set; }
         public FavouriteDirector favouriteDirector { get; set; }

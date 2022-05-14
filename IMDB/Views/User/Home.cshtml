@@ -1,0 +1,193 @@
+﻿
+@model IMDB.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width , initial-scale = 1.0" />
+    <title>IMDB Website</title>
+    <link rel="stylesheet" href="~/Content/Styles.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <a href="#" class="logo">
+
+            <i class='bx bxl-imdb'></i> IMDB
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!--Menu-->
+        <ul class="navbar">
+            <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
+            <li> <a href="#home" class="home-active">Home</a></li>
+            <li> <a href="#Movies">Movies</a></li>
+            <li> <a href="#Movies">Actors</a></li>
+            <li> <a href="#Movies">Directors</a></li>
+        </ul>
+        <a>@Html.ActionLink("SignUp", "SignUp", null, new { @class = "btn" })</a>
+
+    </header>
+
+    <!--home-->
+    <section class="home swiper" id="home">
+        <!--First-->
+        <div class="swiper-wrapper">
+            <div class="swiper-slide container">
+                <img src="~/ViewAssets/unknown (1).png" alt="">
+                <div class="home-text">
+                    <span></span>
+                    <h1>Harry Potter <br>and the Deathly Hallows</h1>
+                    <a href="#" class="btn">Rate Now</a>
+                    <a href="#" class="rate">
+                        <i class='bx bx-star'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide container">
+                <img src="~/ViewAssets/home3.jpg" alt="">
+                <div class="home-text">
+                    <span>Marvel Universe</span>
+                    <h1>Spider-Man<br> Far From Home</h1>
+                    <a href="#" class="btn">Rate Now</a>
+                    <a href="#" class="rate">
+                        <i class='bx bx-star'></i>
+                    </a>
+                </div>
+            </div>
+            <!--Third-->
+
+            <div class="swiper-slide container">
+                <img src="~/ViewAssets/home2.jpg" alt="">
+                <div class="home-text">
+                    <span>Marvel Universe</span>
+                    <h1>Avengers<br> Infinity War</h1>
+                    <a href="#" class="btn">Rate Now</a>
+                    <a href="#" class="rate">
+                        <i class='bx bx-star'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="swiper-pagination"></div>
+
+    </section>
+
+    <section class="movies" id="movies">
+        <h2 class="heading">Top Movies</h2>
+        <!--MOVIES-->
+        <div class="movies-container">
+            <!--box1-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/doctorstrange.png" alt="" />
+                </div>
+                <h3>Doctor Strange in the Multiverse of Madness</h3>
+                <span>2h 6m | Adventure</span>
+            </div>
+            <!--box2-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m1.jpg" alt="" />
+                </div>
+                <h3>Venom</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box3-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/Screenshot 2022-04-26 071041.png" alt="" />
+                </div>
+                <h3>Thor: Love and Thunder</h3>
+                <span>120 min | Adventure</span>
+            </div>
+            <!--box4-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m3.jpg" alt="" />
+                </div>
+                <h3>Batman Vs Superman</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box5-->
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m4.jpg" alt="" />
+                </div>
+                <h3>John Wick 2</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box6-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/m5.jpg" alt="" />
+                </div>
+                <h3>Batman Vs Superman</h3>
+                <span>120 min | Action</span>
+            </div>
+            <!--box7-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/philosophers-stone-20-years-of-movie-magic-harry-poster.jpg" alt="" />
+                </div>
+                <h3>Harry Potter and the Philosopher's Stone</h3>
+                <span>
+                    2h 10m | PG-13
+                </span>
+            </div>
+            <!--box8-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/chamber-of-secrets-theatrical-poster-1050x0-c-default.jpg" alt="" />
+                </div>
+                <h3>Batman Vs Superman</h3>
+                <span>
+                    2h 10m | PG-13
+                </span>
+            </div>
+            <!--box9-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/noway home.png" alt="" />
+                </div>
+                <h3>Spider-Man: No Way Home</h3>
+                <span>120 min | Adventure</span>
+            </div>
+            <!--box10-->
+
+            <div class="box">
+                <div class="box-img">
+                    <img src="~/ViewAssets/hp2.png" alt="" />
+                </div>
+                <h3>Harry Potter and the Deathly Hallows: Part 1</h3>
+                <span>
+                    2h 26m | PG-13
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/JavaScript.js"></script>
+</body>
+</html>

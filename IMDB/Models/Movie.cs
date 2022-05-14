@@ -30,6 +30,6 @@ namespace IMDB.Models
         // nav props
         public virtual Director Director { get; set; }
         public virtual ICollection<MovieActor> MovieActors { get; set; }
-
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

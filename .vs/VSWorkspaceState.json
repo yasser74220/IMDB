@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\IMDB",
-    "\\IMDB\\Controllers"
+    "\\IMDB\\Controllers",
+    "\\IMDB\\Views",
+    "\\IMDB\\Views\\Admin",
+    "\\IMDB\\Views\\Movie"
   ],
-  "SelectedNode": "\\IMDB.sln",
+  "SelectedNode": "\\IMDB\\Views\\Admin\\CreateActor.cshtml",
   "PreviewInSolutionExplorer": false
 }

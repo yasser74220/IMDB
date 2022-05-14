@@ -13,8 +13,8 @@
 <table class="table">
     <tr>
         @*<th>
-            @Html.DisplayNameFor(model => model.Director.FirstName)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Director.FirstName)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Movie_Name)
         </th>
@@ -32,30 +32,30 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Movie_Name)
-    </td>
-    <td>
-        <img src="~/Images/@Path.GetFileName(item.ImgPath)" width="50" height="50" />
-    </td>
-    <td>
-        @foreach (var actor in item.MovieActors)
-        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie_Name)
+            </td>
+            <td>
+                <img src="~/Images/@Path.GetFileName(item.ImgPath)" width="50" height="50" />
+            </td>
+            <td>
+                @foreach (var actor in item.MovieActors)
+                {
 
-            @Html.ActionLink(actor.Actor.FirstName + " " + actor.Actor.LastName, "ActorProfile", new { id = actor.Actor_ID }) <br />
+                    @Html.ActionLink(actor.Actor.FirstName + " " + actor.Actor.LastName, "ActorProfile", new { id = actor.Actor_ID }) <br />
 
-        }
-    </td>
-    <td>
-        @Html.ActionLink(item.Director.FirstName + " " + item.Director.LastName, "DirectorProfile", new { id = item.Director_ID })
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "EditMovie", new { id = item.Movie_ID }) |
-        @Html.ActionLink("Details", "MovieDetails", new { id = item.Movie_ID }) |
-        @Html.ActionLink("Delete", "DeleteMovie", new { id = item.Movie_ID })
-    </td>
-    </tr>
+                }
+            </td>
+            <td>
+                @Html.ActionLink(item.Director.FirstName + " " + item.Director.LastName, "DirectorProfile", new { id = item.Director_ID })
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditMovie", new { id = item.Movie_ID }) |
+                @Html.ActionLink("Details", "MovieDetails", new { id = item.Movie_ID }) |
+                @Html.ActionLink("Delete", "DeleteMovie", new { id = item.Movie_ID })
+            </td>
+        </tr>
     }
 
 </table>

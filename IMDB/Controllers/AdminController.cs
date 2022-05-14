@@ -50,9 +50,9 @@ namespace IMDB.Controllers
 
                     movieActorsDirectors.Movie.ImgPath = pic;
                 }
-                if(movieActorsDirectors.ActorsIds != null)
+                if (movieActorsDirectors.ActorsIds != null)
                 {
-                    foreach(var id in movieActorsDirectors.ActorsIds)
+                    foreach (var id in movieActorsDirectors.ActorsIds)
                     {
                         db.MovieActors.Add(new MovieActor
                         {
@@ -99,10 +99,10 @@ namespace IMDB.Controllers
                 /* This Method acually removes the record of the movie being edited
                  * and inserts a new record containing the new edited information
                  */
-                
+
                 //Remove the edited movie
                 DeleteMovieAux(id);
-               
+
                 //Add the new movie
                 if (file != null)
                 {
@@ -196,9 +196,9 @@ namespace IMDB.Controllers
             {
                 List<Actor> oldActors = db.Actors.ToList();
                 bool duplicate = false;
-                foreach(var actor in oldActors)
+                foreach (var actor in oldActors)
                 {
-                    if(actorMovies.Actor.FirstName == actor.FirstName &&
+                    if (actorMovies.Actor.FirstName == actor.FirstName &&
                        actorMovies.Actor.LastName == actor.LastName &&
                        actorMovies.Actor.Age == actor.Age)
                     {
@@ -207,7 +207,7 @@ namespace IMDB.Controllers
                     }
                 }
 
-                if(duplicate)
+                if (duplicate)
                     return RedirectToAction("Actors");
 
                 if (file != null)
@@ -220,7 +220,7 @@ namespace IMDB.Controllers
                     actorMovies.Actor.ImgPath = pic;
                 }
 
-                if(actorMovies.MoviesIds != null)
+                if (actorMovies.MoviesIds != null)
                 {
                     foreach (var id in actorMovies.MoviesIds)
                     {
@@ -261,13 +261,13 @@ namespace IMDB.Controllers
         public ActionResult EditActor(int id)
         {
             List<MovieActor> movieActors = db.MovieActors.Where(x => x.Actor_ID == id).ToList();
-            
+
             List<Movie> movies = new List<Movie>();
-            foreach(var movieActor in movieActors)
+            foreach (var movieActor in movieActors)
             {
                 movies.Add(db.Movies.Single(x => x.Movie_ID == movieActor.Movie_ID));
             }
-            
+
             ActorMovies actorMovies = new ActorMovies
             {
                 Movies = movies,
@@ -291,12 +291,12 @@ namespace IMDB.Controllers
 
                     actorMovies.Actor.ImgPath = pic;
                 }
-                
+
                 db.Entry(actorMovies.Actor).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
-                return RedirectToAction("ActorProfile", new RouteValueDictionary ( new { Controller="Admin", Action= "ActorProfile", Id = actorMovies.Actor.Actor_ID } ));
-                
+                return RedirectToAction("ActorProfile", new RouteValueDictionary(new { Controller = "Admin", Action = "ActorProfile", Id = actorMovies.Actor.Actor_ID }));
+
             }
             catch
             {
@@ -323,7 +323,7 @@ namespace IMDB.Controllers
             };
             return View(directorMovies);
         }
-        
+
         [HttpGet]
         public ActionResult CreateDirector()
         {
@@ -388,7 +388,7 @@ namespace IMDB.Controllers
             };
             return View(directorMovies);
         }
-        
+
         [HttpPost]
         public ActionResult EditDirector(DirectorMovies directorMovies)
         {

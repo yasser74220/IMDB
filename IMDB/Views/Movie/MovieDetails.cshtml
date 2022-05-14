@@ -1,4 +1,5 @@
-﻿@model IMDB.ViewModels.MovieDetailsViewModel
+﻿
+@model IMDB.ViewModels.MovieDetailsViewModel
 @{
     Layout = null;
 }
@@ -322,17 +323,17 @@
                 @foreach (var actor in Model.movie.MovieActors)
                 {
                     <li class="actor">
-                        <img src="~/ViewAssets/@actor.Actor.Img" class="actor__img" />
+                        <img src="~/ViewAssets/@actor.Actor.ImgPath" class="actor__img" />
                         <h3 class="actor__name">@actor.Actor.FirstName @actor.Actor.LastName</h3>
                     </li>
                 }
             </ul>
         </section>
-        @using (Html.BeginForm("MovieDetails", "Movie",FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("MovieDetails", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             <label for="comment-input">Write Your Comment</label>
-            @Html.TextBoxFor(Model => Model.comment, new { placeholder = "Write Your Comment Here", @class = "user__comment-input", @id = "comment-input" })
+            @Html.TextBoxFor(Model => Model.comment.comment, new { placeholder = "Write Your Comment Here", @class = "user__comment-input", @id = "comment-input" })
             @Html.ValidationMessageFor(model => model.comment.comment, "", new { @class = "p" })
 
 

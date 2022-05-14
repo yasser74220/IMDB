@@ -12,19 +12,15 @@ namespace IMDB.Controllers
     public class MovieController : Controller
     {
         private IMDBContext db = new IMDBContext();
-        private int userID = 17;
-        private int movieID = 1;
+  
         // GET: Movie
+  
         [HttpGet]
-        public ActionResult Index(int movieId, int userId)
+        public ActionResult MovieDetails(string ID)
         {
-            this.movieID = movieId;
-            this.userID = userId;
-            return RedirectToAction("MovieDetails");
-        }
-        [HttpGet]
-        public ActionResult MovieDetails()
-        {
+            int movieID = Int32.Parse(ID);
+            Session["MovieId"] = movieID;
+            int userID = Int32.Parse(Session["Userid"].ToString());
             var movie = db.Movies.SingleOrDefault(m => m.Movie_ID == movieID);
             if (movie != null)
             {
@@ -47,8 +43,9 @@ namespace IMDB.Controllers
         }
         [HttpPost]
         public ActionResult MovieDetails(Comment comment)
-        {
-
+        {   
+            comment.User_ID = Int32.Parse(Session["Userid"].ToString());
+            comment.Movie_ID = Int32.Parse(Session["MovieId"].ToString());
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
@@ -58,44 +55,7 @@ namespace IMDB.Controllers
             return HttpNotFound();
         }
 
-        public ActionResult like()
-        {
-            Like updateLike = db.Likes.SingleOrDefault(l => l.Movie_ID == movieID && l.User_ID == userID);
-            if (updateLike == null)
-            {
-                updateLike.like = (userLike)1;
-                updateLike.Movie_ID = movieID;
-                updateLike.User_ID = userID;
-                db.Likes.Add(updateLike);
-                db.SaveChanges();
-
-            }
-            else
-            {
-                updateLike.like = (userLike)1;
-                db.Entry(updateLike).State = EntityState.Modified;
-            }
-            return RedirectToAction("Index");
-        }
-        public ActionResult dislike()
-        {
-            Like updateLike = db.Likes.SingleOrDefault(l => l.Movie_ID == movieID && l.User_ID == userID);
-            if (updateLike == null)
-            {
-                updateLike.like = (userLike)0;
-                updateLike.Movie_ID = movieID;
-                updateLike.User_ID = userID;
-                db.Likes.Add(updateLike);
-                db.SaveChanges();
-
-            }
-            else
-            {
-                updateLike.like = (userLike)1;
-                db.Entry(updateLike).State = EntityState.Modified;
-            }
-            return RedirectToAction("Index");
-        }
+  
 
 
     }

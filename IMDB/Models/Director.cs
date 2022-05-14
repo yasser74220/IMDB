@@ -23,6 +23,6 @@ namespace IMDB.Models
 
         [Range(1, 120, ErrorMessage = "Incorrect Age Value")]
         public int Age { get; set; }
-        
+
     }
 }

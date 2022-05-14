@@ -28,7 +28,7 @@ namespace IMDB.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "Email Address")]
-        public string Email{ get; set; }
+        public string Email { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -54,7 +54,7 @@ namespace IMDB.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Birthday { get; set; }
 
-        
+
 
     }
 

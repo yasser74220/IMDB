@@ -15,7 +15,7 @@ namespace IMDB.Models
         [Required]
         [ForeignKey("User")]
         public int User_ID { get; set; }
-        
+
         [Required]
         [ForeignKey("Actor")]
         public int Actor_ID { get; set; }
