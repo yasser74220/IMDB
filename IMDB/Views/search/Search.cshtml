@@ -26,7 +26,6 @@
             {
                 <input class="input" type="text" name="SearchValue" />
                 <input type="submit" value="Search" />
-
             }
         </div>
     </div>
@@ -78,8 +77,8 @@
             {
                 <tr>
 
-                    <td>@item.Movie_Name</td>
-                    <td>@item.ImgPath</td>
+                    <td>@Html.ActionLink(item.Movie_Name, "MovieDetails", "Admin", new { id=item.Movie_ID}, new { @class = "Movielink" })</td>
+                    <td><img src="~/Images/@Path.GetFileName(item.ImgPath)" width="100" height="100" /></td>
                 </tr>
             }
         </tbody>
