@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Security;
 using IMDB.DataLayer;
 using IMDB.Models;
@@ -62,20 +63,20 @@ namespace IMDB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(User login)
+        public ActionResult Login(User user)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    User validuser = db.Users.FirstOrDefault(User => User.Email.ToLower() == login.Email.ToLower() && User.Password == login.Password);
+                    User validuser = db.Users.FirstOrDefault(User => User.Email.ToLower() == user.Email.ToLower() && User.Password == user.Password);
 
                     if (validuser !=null )
                     {
                         Session["Userid"] = validuser.User_ID;
                         Session["UserName"] = validuser.Fname + " " + validuser.Lname;
                         Session["UserImg"] = validuser.Image;
-                        return RedirectToAction("EditProfile", "User");
+                        return RedirectToAction("EditProfile", new RouteValueDictionary(new { Controller = "User", Action = "EditProfile", Id = validuser.User_ID }));
                     }
                 }
                 else
@@ -100,18 +101,24 @@ namespace IMDB.Controllers
 
             if (id != null)
             {
-                var Profile = db.Users.SingleOrDefault(a => a.User_ID == id);
-                if (Profile == null)
+                var user = db.Users.SingleOrDefault(a => a.User_ID == id);
+                if (user == null)
                 {
                     return HttpNotFound();
                 }
 
-                 
+                var favMovies = db.UserMovies.Where(x => x.User_ID == id).ToList();
+                var favActors = db.UserActors.Where(x => x.User_ID == id).ToList();
+                var favDirectors = db.UserDirectors.Where(x => x.User_ID == id).ToList();
 
                 EditProfile studentIdentityDepartment = new EditProfile
                 {
-                    user = Profile,
-                 };
+                    User = user,
+                    TempUser = user,
+                    FavouriteMovies = favMovies,
+                    FavouriteActors = favActors,
+                    FavouriteDirectors = favDirectors
+                };
 
                 return View(studentIdentityDepartment);
             }
@@ -120,15 +127,106 @@ namespace IMDB.Controllers
                 return RedirectToAction("Home");
             }
         }
-       
+
         [HttpPost]
-        public ActionResult EditProfile(EditProfile user , int? id)
+        public ActionResult EditProfile(EditProfile profile, HttpPostedFileBase file)
         {
 
-            return View();
+            try
+            {
+                if (file != null)
+                {
+                    string pic = System.IO.Path.GetFileName(file.FileName);
+                    string path = System.IO.Path.Combine(Server.MapPath("~/Images/"), pic);
+
+                    file.SaveAs(path);
+
+                    profile.User.Image = pic;
+                }
+
+                db.Entry(profile.User).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("EditProfile", new RouteValueDictionary(new { Controller = "User", Action = "EditProfile", Id = profile.User.User_ID }));
+
+            }
+            catch
+            {
+                return RedirectToAction("EditProfile", new RouteValueDictionary(new { Controller = "User", Action = "EditProfile", Id = profile.User.User_ID }));
+            }
         }
 
 
+
+        [HttpGet]
+        public ActionResult Favourites(int? id)
+        {
+
+            if (id != null)
+            {
+                var user = db.Users.SingleOrDefault(a => a.User_ID == id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                var movies = db.Movies.ToList();
+                var actors = db.Actors.ToList();
+                var directors = db.Directors.ToList();
+
+                var favMovies = db.UserMovies.Where(x => x.User_ID == id).ToList();
+                var favActors = db.UserActors.Where(x => x.User_ID == id).ToList();
+                var favDirectors = db.UserDirectors.Where(x => x.User_ID == id).ToList();
+
+                EditProfile studentIdentityDepartment = new EditProfile
+                {
+                    User = user,
+                    TempUser = user,
+                    Movies = movies,
+                    Actors = actors,
+                    Directors = directors,
+                    FavouriteMovies = favMovies,
+                    FavouriteActors = favActors,
+                    FavouriteDirectors = favDirectors
+                };
+
+                return View(studentIdentityDepartment);
+            }
+            else
+            {
+                return RedirectToAction("Home");
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult Favourites(EditProfile profile)
+        {
+
+            try
+            {
+                foreach(var favMovie in profile.FavouriteMovies)
+                {
+                    db.Entry(favMovie).State = System.Data.Entity.EntityState.Modified;
+                }
+                foreach(var favActor in profile.FavouriteActors)
+                {
+                    db.Entry(favActor).State = System.Data.Entity.EntityState.Modified;
+                }
+                foreach(var favDirector in profile.FavouriteDirectors)
+                {
+                    db.Entry(favDirector).State = System.Data.Entity.EntityState.Modified;
+                }
+                db.SaveChanges();
+
+                return RedirectToAction("EditProfile", new RouteValueDictionary(new { Controller = "User", Action = "EditProfile", Id = profile.User.User_ID }));
+
+            }
+            catch
+            {
+                return RedirectToAction("EditProfile", new RouteValueDictionary(new { Controller = "User", Action = "EditProfile", Id = profile.User.User_ID }));
+            }
+        }
 
     }
 }
