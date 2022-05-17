@@ -6,8 +6,9 @@ using System.Web;
 
 namespace IMDB.Models
 {
-    public class Actor
+    public class Actor  
     {
+
         [Key]
         public int Actor_ID { get; set; }
 

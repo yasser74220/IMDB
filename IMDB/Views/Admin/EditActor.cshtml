@@ -1,73 +1,113 @@
 ﻿@model IMDB.ViewModels.ActorMovies
 @using IMDB.Models;
 
-@{
-    ViewBag.Title = "EditActor";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "EditActor";
+                Layout = null; }
 
-<h2>Edit Actor</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/Navigation.css">
+    <link rel="stylesheet" href="~/Content/CreateMoviePage.css">
+    <title>Create Movie</title>
+    <style>
+        form a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
-@using (Html.BeginForm("EditActor", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+<body>
+    <header>
+        <a href="#" class="logo">
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Actor.Actor_ID)
+            <i class=''></i> IMDB
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!--Menu-->
+        <ul class="navbar">
+            <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
+            <li> <a href="#home" class="home-active">Home</a></li>
+            <li> <a href="#Movies">Movies</a></li>
+            <li> <a href="#Movies">Actors</a></li>
+            <li> <a href="#Movies">Directors</a></li>
+        </ul>
+        <a>@Html.ActionLink("User Name", "SignUp", null, new { @class = "btn" })</a>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Actor.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Actor.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Actor.FirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    </header>
+    <main>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Actor.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Actor.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Actor.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <h2>Edit Actor</h2>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Actor.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Actor.Age, new { htmlAttributes = new { @class = "form-control", @min = "1", @max = "120" } })
-                @Html.ValidationMessageFor(model => model.Actor.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @using (Html.BeginForm("EditActor", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+@Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Actor.Actor_ID, "Movies", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @foreach (var movie in Model.Movies)
-                {
-                    <dd>
-                        &nbsp&nbsp @Html.ActionLink(movie.Movie_Name, "MovieDetails", new { id = movie.Movie_ID }) <br />
-                    </dd>
-                }
-            </div>
-        </div>
+                <div class="form-horizontal">
+         
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Actor.Actor_ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Actor.ImgPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input name="file" type="file" class="text-danger" required />
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Actor.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Actor.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Actor.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Actor.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Actor.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Actor.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Actors")
-</div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Actor.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Actor.Age, new { htmlAttributes = new { @class = "form-control", @min = "1", @max = "120" } })
+                            @Html.ValidationMessageFor(model => model.Actor.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Actor.Actor_ID, "Movies", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @foreach (var movie in Model.Movies)
+                            {
+            <dd>
+                &nbsp&nbsp @Html.ActionLink(movie.Movie_Name, "MovieDetails", new { id = movie.Movie_ID }) <br />
+            </dd>}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Actor.ImgPath, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input name="file" type="file" class="text-danger" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="submit" />
+                        </div>
+                    </div>
+                </div>}
+        </main>
+
+        <footer>
+            @Html.ActionLink("Back to List", "Actors")
+        </footer>
+    </body>
+</html>

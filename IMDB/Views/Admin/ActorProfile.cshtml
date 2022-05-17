@@ -1,10 +1,46 @@
 ﻿@model IMDB.ViewModels.ActorMovies
 
-@{
-    ViewBag.Title = "ActorProfile";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "ActorProfile";
+    Layout = null; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/Navigation.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/MovieDetailsPage.css">
+    <title>Document</title>
+    <style>
+        a{
+            display:block;
+            text-decoration:none;
+            color:white;
+        }
+    </style>
+</head>
+<body>
 
+
+<header>
+    <a href="#" class="logo">
+
+        <i class='bx bxl-imdb'></i> IMDB
+    </a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <!--Menu-->
+    <ul class="navbar">
+        <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
+        <li> <a href="#home" class="home-active">Home</a></li>
+        <li> <a href="#Movies">Movies</a></li>
+        <li> <a href="#Movies">Actors</a></li>
+        <li> <a href="#Movies">Directors</a></li>
+    </ul>
+    <a>@Html.ActionLink("SignUp", "SignUp", null, new { @class = "btn" })</a>
+
+</header>
+    <main>
 <h2>Actor Profile</h2>
 
 <div>
@@ -46,16 +82,19 @@
         </dt>
         @foreach (var actorMovie in Model.MovieActors)
         {
-            <dd>
-                @Html.ActionLink(actorMovie.Movie.Movie_Name, "MovieDetails", new { id = actorMovie.Movie_ID }) <br />
-            </dd>
-        }
+<dd>
+    @Html.ActionLink(actorMovie.Movie.Movie_Name, "MovieDetails", new { id = actorMovie.Movie_ID }) <br />
+</dd>
+}
 
 
     </dl>
 </div>
-<p>
+</main>
+<footer>
     @Html.ActionLink("Edit", "EditActor", new { id = Model.Actor.Actor_ID }) |
     @Html.ActionLink("Delete", "DeleteActor", new { id = Model.Actor.Actor_ID }) |
     @Html.ActionLink("Back to List", "Actors")
-</p>
+</footer>
+</body>
+</html>

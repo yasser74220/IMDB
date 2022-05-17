@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IMDB.Models.Actor">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Models\Actor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.Comment">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAgAIAAEAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Models\Comment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.Director">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Director.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.FavouriteActor">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAAAgAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FavouriteActor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.FavouriteDirector">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAgAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FavouriteDirector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.FavouriteMovie">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAgAIAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FavouriteMovie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.Like">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAAAgAIAAEAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Like.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.Movie">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAIACAAAAAAAAAAIAAAAAAAAAAAABAAAAIAE=</HashCode>
+      <FileName>Models\Movie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.MovieActor">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAIAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MovieActor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Models.User">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAACAAAAAAAAAAAAIAIACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="IMDB.Controllers.AdminController">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAQAAQgAAACAAAAAgACCwBAAAAAAEAAAAAIQA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Controllers.MovieController">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\MovieController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Controllers.searchController">
+    <Position X="12.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAgAAE=</HashCode>
+      <FileName>Controllers\SearchController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.Controllers.UserController">
+    <Position X="7" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAQCAIAAAAAAAAAAAQAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Web.Mvc.Controller" Collapsed="true">
+    <Position X="23" Y="4" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IMDB.DataLayer.IMDBContext">
+    <Position X="19.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAADAAACAAkACAAAAAAAAAEAAAAAACAAAAAAAAIAE=</HashCode>
+      <FileName>DataLayer\IMDBContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Data.Entity.DbContext" Collapsed="true">
+    <Position X="19" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="IMDB.ViewModels.ActorMovies">
+    <Position X="22" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>ViewModels\ActorMovies.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.ViewModels.DirectorMovies">
+    <Position X="29.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\DirectorMovies.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.ViewModels.EditProfile">
+    <Position X="33.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAhAAAAACkBIAAAAAEAIAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>ViewModels\EditProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.ViewModels.MovieActors_vm">
+    <Position X="24.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>ViewModels\MovieActors_vm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.ViewModels.MovieActorsDirectors">
+    <Position X="31.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAkAAAAAAEAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>ViewModels\MovieActorsDirectors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.ViewModels.MovieDetailsViewModel">
+    <Position X="35.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgUAAAAAAAAAAAAACBABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MovieDetailsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IMDB.ViewModels.SearchViewModel">
+    <Position X="27" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SearchViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="IMDB.Models.UserGender" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

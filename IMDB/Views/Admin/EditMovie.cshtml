@@ -1,96 +1,132 @@
 ﻿@model IMDB.ViewModels.MovieActorsDirectors
 @using IMDB.Models;
 @using IMDB.DataLayer;
-@{
-    ViewBag.Title = "Edit Movie";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Edit Movie";
+    Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/Navigation.css">
+    <link rel="stylesheet" href="~/Content/CreateMoviePage.css">
+    <title>Create Movie</title>
+    <style>
+        form a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+
+            <i class='bx bxl-imdb'></i> IMDB
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!--Menu-->
+        <ul class="navbar">
+            <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
+            <li> <a href="#home" class="home-active">Home</a></li>
+            <li> <a href="#Movies">Movies</a></li>
+            <li> <a href="#Movies">Actors</a></li>
+            <li> <a href="#Movies">Directors</a></li>
+        </ul>
+        <a>@Html.ActionLink("User Name", "SignUp", null, new { @class = "btn" })</a>
+
+    </header>
+    <main>
+    <h2>Edit Movie</h2>
+
+    @using (Html.BeginForm("EditMovie", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+@Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Movie.Movie_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Movie.Movie_Name, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+                            @Html.ValidationMessageFor(model => model.Movie.Movie_Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Movie.Director_ID, "Director Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            &nbsp&nbsp @Html.ActionLink(Model.Movie.Director.FirstName + " " + Model.Movie.Director.LastName, "DirectorProfile", new { id = Model.Movie.Director_ID })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Movie.Director_ID, "Select Directors", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @{ var directors = Model.Directors.Select(s => new
+                                {
+                                    Text = s.FirstName + " " + s.LastName,
+                                    Value = s.Director_ID
+                                }).Distinct();
+                @Html.DropDownListFor(model => model.Movie.Director_ID, new SelectList(directors, "Value", "Text"), "--Select Director--", new { @required = "true" }) }
+                            @Html.ValidationMessageFor(model => model.Movie.Director_ID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Movie.Director_ID, "Actors", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @foreach (var movieActor in Model.MovieActors)
+                            {
+            <dd>
+                &nbsp&nbsp @Html.ActionLink(movieActor.Actor.FirstName + " " + movieActor.Actor.LastName, "ActorProfile", new { id = movieActor.Actor_ID }) <br />
+            </dd>}
+                        </div>
+                    </div>
 
 
-<h2>Edit Movie</h2>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Movie.Director_ID, "Select Actors", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @{ var actors = Model.Actors.Select(s => new
+                                {
+                                    Text = s.FirstName + " " + s.LastName,
+                                    Value = s.Actor_ID
+                                }).Distinct();
+                @Html.ListBoxFor(model => model.ActorsIds, new MultiSelectList(actors, "Value", "Text"), new { multiple = "multiple" }); }
+                            @Html.ValidationMessageFor(model => model.ActorsIds, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-@using (Html.BeginForm("EditMovie", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Movie.ImgPath, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input name="file" type="file" class="text-danger" required />
+                        </div>
+                    </div>
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="submit" />
+                        </div>
+                    </div>
+                </div>}
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Movie.Movie_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Movie.Movie_Name, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
-                @Html.ValidationMessageFor(model => model.Movie.Movie_Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    
+        </main>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Movie.Director_ID, "Director Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                &nbsp&nbsp @Html.ActionLink(Model.Movie.Director.FirstName + " " + Model.Movie.Director.LastName, "DirectorProfile", new { id = Model.Movie.Director_ID })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Movie.Director_ID, "Select Directors", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    var directors = Model.Directors.Select(s => new
-                    {
-                        Text = s.FirstName + " " + s.LastName,
-                        Value = s.Director_ID
-                    }).Distinct();
-                    @Html.DropDownListFor(model => model.Movie.Director_ID, new SelectList(directors, "Value", "Text"), "--Select Director--", new { @required = "true" })
-                }
-                @Html.ValidationMessageFor(model => model.Movie.Director_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Movie.Director_ID, "Actors", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @foreach (var movieActor in Model.MovieActors)
-                {
-                    <dd>
-                        &nbsp&nbsp @Html.ActionLink(movieActor.Actor.FirstName + " " + movieActor.Actor.LastName, "ActorProfile", new { id = movieActor.Actor_ID }) <br />
-                    </dd>
-                }
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Movie.Director_ID, "Select Actors", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @{
-                    var actors = Model.Actors.Select(s => new
-                    {
-                        Text = s.FirstName + " " + s.LastName,
-                        Value = s.Actor_ID
-                    }).Distinct();
-                    @Html.ListBoxFor(model => model.ActorsIds, new MultiSelectList(actors, "Value", "Text"), new { multiple = "multiple" });
-                }
-                @Html.ValidationMessageFor(model => model.ActorsIds, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Movie.ImgPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input name="file" type="file" class="text-danger" required />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <footer>
+            @Html.ActionLink("Back to List", "Index")
+        </footer>
+</body>
+</html>
 

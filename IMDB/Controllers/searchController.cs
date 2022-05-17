@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using IMDB.DataLayer;
-using IMDB.ViewModels;
+ using IMDB.ViewModels;
 using System.Data.Entity;
+using IMDB.DataLayer;
 
 namespace IMDB.Controllers
 {
@@ -39,9 +39,9 @@ namespace IMDB.Controllers
                 string[] SearchSplit = SearchValue.Split(' ');
                 foreach (var item in SearchSplit)
                 {
-                    searchVM.Actors = _context.Actors.Where(ActorModel => ActorModel.FirstName.StartsWith(item) || ActorModel.LastName.StartsWith(item) || SearchValue == null);
-                    searchVM.Directors = _context.Directors.Where(DirectorModel => DirectorModel.FirstName.StartsWith(item) || DirectorModel.LastName.StartsWith(item) || SearchValue == null);
-                    searchVM.Movies = _context.Movies.Where(MovieModel => MovieModel.Movie_Name.StartsWith(item) || SearchValue == null);
+                    searchVM.Actors = _context.Actors.Where(ActorModel => ActorModel.FirstName.ToLower().StartsWith(item) || ActorModel.LastName.ToLower().StartsWith(item) || SearchValue == null);
+                    searchVM.Directors = _context.Directors.Where(DirectorModel => DirectorModel.FirstName.ToLower().StartsWith(item) || DirectorModel.LastName.ToLower().StartsWith(item) || SearchValue == null);
+                    searchVM.Movies = _context.Movies.Where(MovieModel => MovieModel.Movie_Name.ToLower().StartsWith(item) || SearchValue == null);
                 }
             }
             return View(searchVM);

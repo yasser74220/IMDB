@@ -7,8 +7,9 @@ using System.Web;
 
 namespace IMDB.Models
 {
-    public class FavouriteMovie
+    public class FavouriteMovie 
     {
+
         [Key]
         public int ID { get; set; }
 

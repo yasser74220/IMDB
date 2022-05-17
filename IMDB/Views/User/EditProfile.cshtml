@@ -118,7 +118,7 @@
         }
 
             .btn:hover {
-                background: #fa1216;
+                background: #9b0d0f;
                 box-sizing: border-box;
                 list-style: none;
                 text-decoration: none;
@@ -144,7 +144,6 @@
                 text-decoration: none;
             }
 
-
         .div1 {
             position: absolute;
             background-color: black;
@@ -165,7 +164,7 @@
             font-weight: bold;
         }
 
-        .div3, .div4, .div5, .div6, .div10 {
+        .div3, .div4, .div5, .div6, .div10, .div {
             margin-left: 50px;
         }
 
@@ -198,7 +197,6 @@
             color: white;
         }
 
-
         .icon1 {
             position: absolute;
             margin-left: 7px;
@@ -230,14 +228,9 @@
             height: 70px;
         }
 
-
-
-
         .div6 label {
             margin-left: 90px;
         }
-
-
 
         .p {
             position: absolute;
@@ -263,12 +256,26 @@
             border-color: white;
             border-style: solid;
         }
+
+        .date {
+            color: black;
+            --text-color: white;
+        }
+
+        .favourite-btn {
+            float: right;
+        }
     </style>
 </head>
 
 <body>
-    @using (Html.BeginForm("EditProfile", "User", new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("EditProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
+        @Html.HiddenFor(model => model.User.User_ID)
+        @Html.HiddenFor(model => model.User.Birthday)
+        @Html.HiddenFor(model => model.User.Gender)
+        @Html.HiddenFor(model => model.User.ConfirmEmail)
+        @Html.HiddenFor(model => model.User.ConfirmPassword)
         <header>
             <a href="#" class="logo">
 
@@ -278,9 +285,9 @@
             <!--Menu-->
             <ul class="navbar">
                 <li> <a href="#home" class="home-active">Edit Profile</a></li>
-                <li> <a href="#Movies">Movies</a></li>
-                <li> <a href="#Movies">Actors</a></li>
-                <li> <a href="#Movies">Directors</a></li>
+                <li> @Html.ActionLink("Movies", "Index", "Admin")</li>
+                <li> @Html.ActionLink("Actors", "Actors", "Admin")</li>
+                <li> @Html.ActionLink("Directors", "Directors", "Admin")</li>
             </ul>
 
         </header>
@@ -296,9 +303,9 @@
 
                 <i class="icon1"> <img src="~/ViewAssets/id-card.png" alt="logo"></i>
 
-                @Html.TextBoxFor(Model => Model.user.Fname, new { @class = "input" })
+                @Html.EditorFor(Model => Model.User.Fname, new { @class = "input" })
                 <i class="icon2"> <img src="~/ViewAssets/id-card.png" alt="logo"></i>
-                @Html.TextBoxFor(Model => Model.user.Lname, new { @class = "input" })
+                @Html.EditorFor(Model => Model.User.Lname, new { @class = "input" })
 
 
             </div>
@@ -307,30 +314,34 @@
 
                 <i class="icon1"> <img src="~/ViewAssets/mail (2).png" alt="logo"></i>
 
-                @Html.TextBoxFor(Model => Model.user.Email, new { @class = "input" })
+                @Html.EditorFor(Model => Model.User.Email, new { @class = "input" })
 
                 <i class="icon1"> <img src="~/ViewAssets/lock (1).png" alt="logo"></i>
 
-                @Html.TextBoxFor(Model => Model.user.Password, new { @class = "input" })
+                @Html.EditorFor(Model => Model.User.Password, new { @class = "input" })
+
+            </div>
+            <br><br>
+
+            <div class="div">
+
+                <i class="icon1"> <img src="~/ViewAssets/add-image-white.png" alt="logo"></i>
+                <input id="file" name="file" type="file" class="text-danger" required />
+
 
             </div>
             <br> <br>
-            <div class="div5">
+
+            <div class="div">
 
 
-
-
-            </div>
-            <br>
-            <br>
-            <div class="div6">
-
-
-
+                <input type="submit" value="Save" class="btn" />
 
             </div>
 
 
+            <br>
+            <br>
 
 
 
@@ -338,9 +349,20 @@
 
             </div>
             <div class="profile">
-                <img src="@Url.Content("~/ViewAssets/"+Model.user.Image)" alt="" style="width:100% " />
-                <h1>@Model.user.Fname @Model.user.Lname</h1>
+                <img src="@Url.Content("~/Images/"+Model.User.Image)" alt="" style="width:100% " />
+                <h1>@Model.User.Fname @Model.User.Lname</h1>
+
+                <p>
+                    @Html.ActionLink("favourites", "Favourites", "User", new { id = Session["Userid"] }, new { controller = "User" })
+                            </p>
+
             </div>
+
+            <div class="profile">
+
+
+            </div>
+
         </div>
     }
 </body>

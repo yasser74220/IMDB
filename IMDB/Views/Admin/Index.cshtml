@@ -1,61 +1,92 @@
 ﻿@model IEnumerable<IMDB.Models.Movie>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@{ ViewBag.Title = "Index";
+    Layout = null;
+        }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/Navigation.css" />
+    <link rel="stylesheet" href="~/Content/adminIndex.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+
+            <i class='bx bxl-imdb'></i> IMDB
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!--Menu-->
+        <ul class="navbar">
+            <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
+            <li> <a href="#home" class="home-active">Home</a></li>
+            <li> <a href="#Movies">Movies</a></li>
+            <li> <a href="#Movies">Actors</a></li>
+            <li> <a href="#Movies">Directors</a></li>
+        </ul>
+        <a>@Html.ActionLink("User Name", "SignUp", null, new { @class = "btn" })</a>
+
+    </header>
+
+    <main>
+    <h2>Movies</h2>
+
+    <p>
+        @Html.ActionLink("Create New Movie", "CreateMovie")
+    </p>
+    <table class="table">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Director.FirstName)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Movie_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgPath)
+            </th>
+            <th>
+                Actors
+            </th>
+            <th>
+                Director
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Movie_Name)
+    </td>
+    <td>
+        <img src="~/Images/@Path.GetFileName(item.ImgPath)" width="50" height="50" />
+    </td>
+    <td>
+        @foreach (var actor in item.MovieActors)
+        {
+
+@Html.ActionLink(actor.Actor.FirstName + " " + actor.Actor.LastName, "ActorProfile", new { id = actor.Actor_ID }) <br />}
+    </td>
+    <td>
+        @Html.ActionLink(item.Director.FirstName + " " + item.Director.LastName, "DirectorProfile", new { id = item.Director_ID })
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditMovie", new { id = item.Movie_ID }) |
+        @Html.ActionLink("Details", "MovieDetails", new { id = item.Movie_ID }) |
+        @Html.ActionLink("Delete", "DeleteMovie", new { id = item.Movie_ID })
+    </td>
+</tr>
 }
 
-<h2>Movies</h2>
-
-<p>
-    @Html.ActionLink("Create New Movie", "CreateMovie")
-</p>
-<table class="table">
-    <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Director.FirstName)
-            </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Movie_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImgPath)
-        </th>
-        <th>
-            Actors
-        </th>
-        <th>
-            Director
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Movie_Name)
-            </td>
-            <td>
-                <img src="~/Images/@Path.GetFileName(item.ImgPath)" width="50" height="50" />
-            </td>
-            <td>
-                @foreach (var actor in item.MovieActors)
-                {
-
-                    @Html.ActionLink(actor.Actor.FirstName + " " + actor.Actor.LastName, "ActorProfile", new { id = actor.Actor_ID }) <br />
-
-                }
-            </td>
-            <td>
-                @Html.ActionLink(item.Director.FirstName + " " + item.Director.LastName, "DirectorProfile", new { id = item.Director_ID })
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditMovie", new { id = item.Movie_ID }) |
-                @Html.ActionLink("Details", "MovieDetails", new { id = item.Movie_ID }) |
-                @Html.ActionLink("Delete", "DeleteMovie", new { id = item.Movie_ID })
-            </td>
-        </tr>
-    }
-
-</table>
+    </table>
+    </main>>
+</body>
+</html>

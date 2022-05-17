@@ -155,6 +155,17 @@ html::-webkit-scrollbar-thumb {
         text-decoration: none;
     }
 
+.bx bx-search-alt {
+    padding: 0.7rem 1.4rem;
+    background: var(--main-color);
+    color: var(--bg-color);
+    font-weight: 400;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    cursor:pointer;
+}
 .container {
     width: 100%;
     min-height: 640px;
@@ -296,3 +307,6 @@ html::-webkit-scrollbar-thumb {
     list-style: none;
     text-decoration: none;
 }
+
+ 
+

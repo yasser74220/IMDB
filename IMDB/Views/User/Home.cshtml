@@ -30,7 +30,14 @@
         <div class="bx bx-menu" id="menu-icon"></div>
         <!--Menu-->
         <ul class="navbar">
-            <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
+            <li>
+                @using (Html.BeginForm("Search", "Search", FormMethod.Post))
+                {
+
+                    <input size="50" type="text" name="SearchValue" placeholder="Search.." />
+                    <button class="btn" type="submit" value="Search"><i class='bx bx-search-alt'></i></button>
+                }
+                    </li>
             <li> <a href="#home" class="home-active">Home</a></li>
             <li> <a href="#Movies">Movies</a></li>
             <li> <a href="#Movies">Actors</a></li>

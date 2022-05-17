@@ -1,50 +1,89 @@
 ﻿@model IMDB.ViewModels.DirectorMovies
 
-@{
-    ViewBag.Title = "DirectorProfile";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Director Profile</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Name
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Director.FirstName) @Html.DisplayFor(model => model.Director.LastName)
-        </dd>
-
-        <br />
-
-        <dt>
-            Age
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Director.Age)
-        </dd>
-
-        <br />
-
-        <dt>
-            Movies
-        </dt>
-
-        @foreach (var movie in Model.Movies)
-        {
-            <dd>
-                @Html.ActionLink(movie.Movie_Name, "MovieDetails", new { id = movie.Movie_ID }) <br />
-            </dd>
+@{ ViewBag.Title = "DirectorProfile";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = null; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/Navigation.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/MovieDetailsPage.css">
+    <title>Document</title>
+    <style>
+        a {
+            display: block;
+            text-decoration: none;
+            color: white;
         }
+    </style>
+</head>
+<body>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "EditDirector", new { id = Model.Director.Director_ID }) |
-    @Html.ActionLink("Delete", "DeleteDirector", new { id = Model.Director.Director_ID }) |
-    @Html.ActionLink("Back to List", "Directors")
-</p>
+
+    <header>
+        <a href="#" class="logo">
+
+            <i class='bx bxl-imdb'></i> IMDB
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!--Menu-->
+        <ul class="navbar">
+            <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
+            <li> <a href="#home" class="home-active">Home</a></li>
+            <li> <a href="#Movies">Movies</a></li>
+            <li> <a href="#Movies">Actors</a></li>
+            <li> <a href="#Movies">Directors</a></li>
+        </ul>
+        <a>@Html.ActionLink("SignUp", "SignUp", null, new { @class = "btn" })</a>
+
+    </header>
+    <main>
+        <h2>Director Profile</h2>
+
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Name
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Director.FirstName) @Html.DisplayFor(model => model.Director.LastName)
+                </dd>
+
+                <br />
+
+                <dt>
+                    Age
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Director.Age)
+                </dd>
+
+                <br />
+
+                <dt>
+                    Movies
+                </dt>
+
+                @foreach (var movie in Model.Movies)
+                {
+    <dd>
+        @Html.ActionLink(movie.Movie_Name, "MovieDetails", new { id = movie.Movie_ID }) <br />
+    </dd>}
+
+            </dl>
+        </div>
+        </main>
+        <footer>
+            @Html.ActionLink("Edit", "EditDirector", new { id = Model.Director.Director_ID }) |
+            @Html.ActionLink("Delete", "DeleteDirector", new { id = Model.Director.Director_ID }) |
+            @Html.ActionLink("Back to List", "Directors")
+        </footer>
+    </body>
+</html>

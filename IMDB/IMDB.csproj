@@ -131,6 +131,7 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DataLayer\IData.cs" />
     <Compile Include="DataLayer\IMDBContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -164,6 +165,7 @@
     <Compile Include="ViewModels\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\adminIndex.css" />
     <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -172,10 +174,11 @@
     <Content Include="Content\boxicons.min.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\CreateMoviePage.css" />
     <Content Include="Content\JavaScript.js" />
-    <Content Include="Content\NavBar.css" />
+    <Content Include="Content\MovieDetailsPage.css" />
+    <Content Include="Content\Navigation.css" />
     <Content Include="Content\Styles.css" />
-    <Content Include="Content\stylesheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -184,6 +187,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-chosen.less" />
     <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -274,6 +278,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\User\SignUp.cshtml" />
+    <Content Include="Views\User\Favourites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

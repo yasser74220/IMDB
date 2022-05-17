@@ -9,13 +9,19 @@ namespace IMDB.ViewModels
     public class EditProfile
     {
 
-        public User user { get; set; }
-        public FavouriteActor favouriteActor { get; set; }
-        public FavouriteDirector favouriteDirector { get; set; }
-        public FavouriteMovie favouriteMovie { get; set; }
-        public List<Actor> actor { get; set; }
-        public List<Director> director { get; set; }
-        public List<Movie> movie { get; set; }
+        public User User { get; set; }
+        public User TempUser { get; set; }
+        public List<FavouriteActor> FavouriteActors { get; set; }
+        public List<FavouriteDirector> FavouriteDirectors { get; set; }
+        public List<FavouriteMovie> FavouriteMovies { get; set; }
+
+        public List<int> FavouriteActorsIds { get; set; }
+        public List<int> FavouriteDirectorsIds { get; set; }
+        public List<int> FavouriteMoviesIds { get; set; }
+
+        public List<Actor> Actors { get; set; }
+        public List<Director> Directors { get; set; }
+        public List<Movie> Movies { get; set; }
 
     }
 }

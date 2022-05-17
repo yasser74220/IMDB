@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using IMDB.Models;
 using System.Data.Entity;
-
+ 
+using System.Data.Entity.Infrastructure;
 namespace IMDB.DataLayer
 {
     public class IMDBContext : DbContext
@@ -13,6 +14,7 @@ namespace IMDB.DataLayer
         {
 
         }
+
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Director> Directors { get; set; }
@@ -28,6 +30,7 @@ namespace IMDB.DataLayer
             modelBuilder.Entity<MovieActor>().HasKey(sc => new { sc.Actor_ID, sc.Movie_ID });
             modelBuilder.Entity<Like>().HasKey(sc => new { sc.Movie_ID, sc.User_ID });
         }
+       
     }
 
 }

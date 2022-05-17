@@ -6,8 +6,11 @@ using System.Web;
 
 namespace IMDB.Models
 {
-    public class Director
+    public class Director  
     {
+
+
+
         [Key]
         public int Director_ID { get; set; }
 

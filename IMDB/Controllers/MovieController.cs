@@ -42,17 +42,30 @@ namespace IMDB.Controllers
             }
         }
         [HttpPost]
-        public ActionResult MovieDetails(Comment comment)
+        public ActionResult MovieDetails(Comment comment , int? like)
         {   
             comment.User_ID = Int32.Parse(Session["Userid"].ToString());
             comment.Movie_ID = Int32.Parse(Session["MovieId"].ToString());
-            if (ModelState.IsValid)
-            {
-                db.Comments.Add(comment);
+             
+                Like v = new Like();
+               if(like != null)
+                {
+                    if (like == 1)
+                    {
+                        v.like = true;
+                        v.User_ID = Int32.Parse(Session["Userid"].ToString());
+                        v.Movie_ID = Int32.Parse(Session["MovieId"].ToString());
+                        db.Likes.Add(v);
+                    }
+                }
+               else
+                {
+                    db.Comments.Add(comment);
+                }
+             
                 db.SaveChanges();
                 return RedirectToAction("MovieDetails");
-            }
-            return HttpNotFound();
+            
         }
 
   

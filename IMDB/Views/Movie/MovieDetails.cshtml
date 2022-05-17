@@ -293,68 +293,77 @@
     </style>
 </head>
 <body>
-    <header> Navigation Bar</header>
-    <main class="container">
-        <section class="movie__details">
-            <div class="logo">
-                <p class="IMDB">IMDB</p>
-                @if (Model.hadRated)
-                {
-                    <p class="User__Rating">You @Model.like.like Thi Movie</p>
-                }
-                else
-                {
-                    <p class="User__Rating">You did not rate this movie</p>
-                }
-            </div>
-            <img src="~/ViewAssets/@Model.movie.ImgPath">
-            <div class="movie__data">
-                <h2>@Model.movie.Movie_Name</h2>
-                <h3>@Model.movie.Director.FirstName @Model.movie.Director.LastName </h3>
-            </div>
-            <div class="rate">
-                <a href=@Url.Action(" like", "Movie" )><img src="~/ViewAssets/dislike.jpg" /></a>
-                <a href=@Url.Action(" dislike", "Movie" )><img src="~/ViewAssets/like.png" /></a>
-            </div>
-        </section>
-        <h2 class="title">Actors</h2>
-        <section class="movie__actors">
-            <ul>
-                @foreach (var actor in Model.movie.MovieActors)
-                {
-                    <li class="actor">
-                        <img src="~/ViewAssets/@actor.Actor.ImgPath" class="actor__img" />
-                        <h3 class="actor__name">@actor.Actor.FirstName @actor.Actor.LastName</h3>
-                    </li>
-                }
-            </ul>
-        </section>
-        @using (Html.BeginForm("MovieDetails", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
-            <label for="comment-input">Write Your Comment</label>
-            @Html.TextBoxFor(Model => Model.comment.comment, new { placeholder = "Write Your Comment Here", @class = "user__comment-input", @id = "comment-input" })
-            @Html.ValidationMessageFor(model => model.comment.comment, "", new { @class = "p" })
+    
+        <header> Navigation Bar</header>
+        <main class="container">
+            @using (Html.BeginForm("MovieDetails", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <section class="movie__details">
+                    <div class="logo">
+                        <p class="IMDB">IMDB</p>
+                        @if (Model.hadRated)
+                        {
+                            <p class="User__Rating">You Love This Movie</p>
+                        }
+                        else
+                        {
+                            <p class="User__Rating">You didnot Love this movie</p>
+                        }
+                    </div>
+                    <img src="~/ViewAssets/@Model.movie.ImgPath">
+                    <div class="movie__data">
+                        <h2>@Model.movie.Movie_Name</h2>
+                        <h3>@Model.movie.Director.FirstName @Model.movie.Director.LastName </h3>
+                    </div>
 
 
-            <input type="submit" value="Submit" />
-        }
+                    <div class="rate">
+                        <button type="submit" value="1" name="like">Like</button>
+                        <button type="submit" value="0" name="like">Dis Like</button>
 
-        <h2 class="title">Comments</h2>
-        <section class="user__comments">
-            <ul class="comments">
-                @foreach (var comment in Model.movie.Comments)
-                {
-                    <li class="comment">
-                        <img src="~/ViewAssets/@comment.User.Image" class="user__img" />
-                        <section>
-                            <h3 class="user__name">@comment.User.Fname  @comment.User.Lname</h3>
-                            <p clas="user__comment">@comment.comment</p>
+                    </div>
+                </section>
+            }
+            <h2 class="title">Actors</h2>
+            <section class="movie__actors">
+                <ul>
+                    @foreach (var actor in Model.movie.MovieActors)
+                    {
+                        <li class="actor">
+                            <img src="~/ViewAssets/@actor.Actor.ImgPath" class="actor__img" />
+                            <h3 class="actor__name">@actor.Actor.FirstName @actor.Actor.LastName</h3>
+                        </li>
+                    }
+                </ul>
+            </section>
+
+            @using (Html.BeginForm("MovieDetails", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <label for="comment-input">Write Your Comment</label>
+                @Html.TextBoxFor(Model => Model.comment.comment, new { placeholder = "Write Your Comment Here", @class = "user__comment-input", @id = "comment-input" })
+                @Html.ValidationMessageFor(model => model.comment.comment, "", new { @class = "p" })
+
+
+                <input type="submit" value="Submit" />
+
+            }
+            <h2 class="title">Comments</h2>
+            <section class="user__comments">
+                <ul class="comments">
+                    @foreach (var comment in Model.movie.Comments)
+                    {
+                        <li class="comment">
+                            <img src="~/ViewAssets/@comment.User.Image" class="user__img" />
                             <section>
-                    </li>
-                }
-            </ul>
-        </section>
-    </main>
+                                <h3 class="user__name">@comment.User.Fname  @comment.User.Lname</h3>
+                                <p clas="user__comment">@comment.comment</p>
+                                <section>
+                        </li>
+                    }
+                </ul>
+            </section>
+        </main>
+    
 </body>
 </html>

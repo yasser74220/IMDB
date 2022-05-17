@@ -7,8 +7,9 @@ using System.Web;
 
 namespace IMDB.Models
 {
-    public class FavouriteDirector
+    public class FavouriteDirector  
     {
+
         [Key]
         public int ID { get; set; }
 
@@ -23,5 +24,6 @@ namespace IMDB.Models
         // nav props
         public virtual User User { get; set; }
         public virtual Director Director { get; set; }
+
     }
 }
