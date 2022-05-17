@@ -32,7 +32,7 @@
         <ul class="navbar">
             <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
             <li> <a href="#home" class="home-active">Home</a></li>
-            <li> <a href="#Movies">Movies</a></li>
+            <li>@Html.ActionLink("Movies", "Index", "Admin", new { id = "" }, new {  })</a></li>
             <li> <a href="#Movies">Actors</a></li>
             <li> <a href="#Movies">Directors</a></li>
         </ul>
