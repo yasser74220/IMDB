@@ -130,18 +130,18 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="DataLayer\IData.cs" />
     <Compile Include="DataLayer\IMDBContext.cs" />
+    <Compile Include="functions\AdminFunctions.cs" />
+    <Compile Include="functions\DBadd.cs" />
+    <Compile Include="functions\Dbdata.cs" />
+    <Compile Include="functions\DBdelete.cs" />
+    <Compile Include="functions\DbUpdate.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205141046399_set.cs" />
-    <Compile Include="Migrations\202205141046399_set.designer.cs">
-      <DependentUpon>202205141046399_set.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205141136074_up.cs" />
-    <Compile Include="Migrations\202205141136074_up.designer.cs">
-      <DependentUpon>202205141136074_up.cs</DependentUpon>
+    <Compile Include="Migrations\202205180539546_j.cs" />
+    <Compile Include="Migrations\202205180539546_j.Designer.cs">
+      <DependentUpon>202205180539546_j.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -297,11 +297,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205141046399_set.resx">
-      <DependentUpon>202205141046399_set.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205141136074_up.resx">
-      <DependentUpon>202205141136074_up.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205180539546_j.resx">
+      <DependentUpon>202205180539546_j.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
