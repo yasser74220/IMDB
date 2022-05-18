@@ -32,5 +32,6 @@ namespace IMDB.Models
 
         // nav prop
         public virtual ICollection<MovieActor> MovieActors { get; set; }
+       
     }
 }

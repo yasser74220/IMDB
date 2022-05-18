@@ -26,10 +26,10 @@
         <!--Menu-->
         <ul class="navbar">
             <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
-            <li> <a href="#home" class="home-active">Home</a></li>
-            <li> <a href="#Movies">Movies</a></li>
-            <li> <a href="#Movies">Actors</a></li>
-            <li> <a href="#Movies">Directors</a></li>
+            <li>  @Html.ActionLink("Home", "Home", "User")</li>
+            <li>  @Html.ActionLink("Movie", "Index")</li>
+            <li>  @Html.ActionLink("Actors", "Actors")</li>
+            <li>  @Html.ActionLink("Directors", "Directors")</li>
         </ul>
         <a>@Html.ActionLink("User Name", "SignUp", null, new { @class = "btn" })</a>
 
@@ -41,6 +41,7 @@
         @using (Html.BeginForm("CreateActor", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
 @Html.AntiForgeryToken()
+
 
                 <div class="form-horizontal">
                   
@@ -70,14 +71,16 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Actor.Actor_ID, "Select The Actor's Movies", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.Actor.FirstName, "Select The Actor's Movies", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
+
                             @{ var movies = Model.Movies.Select(s => new
                                 {
                                     Text = s.Movie_Name,
                                     Value = s.Movie_ID
                                 }).Distinct();
-                @Html.ListBoxFor(model => model.MoviesIds, new MultiSelectList(movies, "Value", "Text"), new { multiple = "multiple" }); }
+                                @Html.ListBoxFor(model => model.MoviesIds, new MultiSelectList(movies, "Value", "Text"), new { multiple = "multiple" });
+                                }
                         </div>
                     </div>
 

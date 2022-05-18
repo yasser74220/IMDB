@@ -35,10 +35,10 @@
         <!--Menu-->
         <ul class="navbar">
             <li>@Html.ActionLink("Search", "search", "Search", new { id = "" }, new { @class = "btn" })</li>
-            <li> <a href="#home" class="home-active">Home</a></li>
-            <li> <a href="#Movies">Movies</a></li>
-            <li> <a href="#Movies">Actors</a></li>
-            <li> <a href="#Movies">Directors</a></li>
+            <li>  @Html.ActionLink("Home", "Home", "User")</li>
+            <li>  @Html.ActionLink("Movie", "Index")</li>
+            <li>  @Html.ActionLink("Actors", "Actors")</li>
+            <li>  @Html.ActionLink("Directors", "Directors")</li>
         </ul>
         <a>@Html.ActionLink("User Name", "SignUp", null, new { @class = "btn" })</a>
 
